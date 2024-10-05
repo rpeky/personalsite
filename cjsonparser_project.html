@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Singapore Bus Route Project by Ryan Pek, analyzing and mapping bus routes in Singapore using real-time data.">
+    <meta name="description" content="C JSON Parser Project by Ryan Pek, a custom JSON parser built in C.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Singapore Bus Route Project - Ryan Pek</title>
+    <title>C JSON Parser Project - Ryan Pek</title>
     <style>
         body {
             font-family: sans-serif;
@@ -56,39 +56,42 @@
 
 <body>
     <header>
-        <h1>Singapore Bus Route Project</h1>
+        <h1>C JSON Parser Project</h1>
         <p>Ryan Pek | 2nd Year Undergraduate at SUTD</p>
     </header>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="#about">About</a>
         <a href="#features">Features</a>
         <a href="#usage">Usage</a>
     </nav>
+
     <main>
         <section id="about">
             <h2>About the Project</h2>
-            <p>The Singapore Bus Route Project aims to analyze and visualize bus routes in Singapore using real-time data. This project seeks to come up with a route to visit all the bus stops in Singapore, so that I can take a bus within a reasonable amount of time to visit them all.</p>
+            <p>This project is a basic JSON parser built in C. It was a way for me to learn more about parsing data formats and managing memory in C. The parser handles simple JSON data like objects and arrays, though it’s still a work in progress with room for further development.</p>
         </section>
 
         <section id="features">
             <h2>Features</h2>
             <ul>
-                <li>Real-time bus data integration for accurate route mapping.</li>
-                <li>Interactive visualization of bus routes and stops.</li>
-                <li>Customizable filters for user preferences.</li>
-                <li>Data analytics to optimize travel times and routes.</li>
+                <li>Supports common JSON types like objects, arrays, strings, and numbers.</li>
+                <li>Basic error handling for malformed JSON.</li>
+                <li>Written in pure C with dynamic memory management.</li>
             </ul>
         </section>
 
         <section id="usage">
             <h2>Usage</h2>
-            <p>To run the project, clone the repository and follow these steps:</p>
+            <p>To try out the project, you can clone the repository and follow these steps:</p>
             <ol>
-                <li>Clone the repository: <code>git clone https://github.com/rpeky/Singapore-Bus-Route-Project.git</code></li>
-                <li>Navigate to the project directory: <code>cd Singapore-Bus-Route-Project</code></li>
+                <li>Clone the repository: <code>git clone https://github.com/rpeky/C-JSON-Parser.git</code></li>
+                <li>Navigate to the project directory: <code>cd C-JSON-Parser</code></li>
+                <li>Compile the project: <code>make</code></li>
+                <li>Run the parser: <code>./build/json_parser</code></li>
             </ol>
-            <p>For detailed documentation, please refer to the <a href="https://github.com/rpeky/Singapore-Bus-Route-Project/wiki" target="_blank">GitHub repository</a>.</p>
+            <p>Check out the <a href="https://github.com/rpeky/C-JSON-Parser" target="_blank">GitHub repository</a> for more details and updates.</p>
     </main>
 
     <footer>
@@ -100,4 +103,3 @@
     </footer>
 </body>
 </html>
-
