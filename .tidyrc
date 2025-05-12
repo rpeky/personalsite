@@ -1,0 +1,12 @@
+# .tidyrc
+indent: yes
+indent-spaces: 4
+wrap: 0
+indent-attributes: no
+vertical-space: yes
+markup: yes
+quiet: yes
+output-html: yes
+indent-cdata: yes
+show-body-only: no
+tidy-mark: no
