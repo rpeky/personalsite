@@ -96,7 +96,6 @@ body {
             <a href="about.html">About</a> |
             <a href="resume.pdf" download>Résumé</a> |
             <a href="projects.html">Projects</a> |
-            <a href="setup.html">Setup</a> |
             <a href="homelab.html">Homelab</a> |
             <a href="#contact">Contact</a>
         </nav>
@@ -111,7 +110,7 @@ body {
                 </p>
                 <p>
                 <p><a href="resume.pdf" download>Download My Resume</a></p>
-                <a href="about.html">More about me</a>.
+                <a href="about.html">More → </a>
                 </p>
             </section>
 
@@ -119,92 +118,107 @@ body {
                 <h2>What I'm Currently Working On</h2>
                 <ul>
                     <li>
-                        <a href="bus_route_project.html">Singapore Bus Route Project</a>: A fun ongoing project where I’ve been analyzing and mapping Singapore's bus routes using real-time data to figure out the best way to visit every bus stop.
-                    </li>
-                    <li>
                         <a href="pathfinding_project.html">SUTD Pathfinding Project</a>: I explored pathfinding algorithms from scratch and used them to map out
                         the SUTD campus more efficiently. Now an official undergraduate research project.
                     </li>
                     <li>
-                        <a href="cjsonparser_project.html">C JSON Parser</a>: An ongoing C-based JSON parser built from scratch, designed to read, parse, and handle JSON data. This project is a fun dive into systems programming, as well as learning how to handle JSON data from scratch.
+                        <a href="bus_route_project.html">Singapore Bus Route Project</a>: A fun ongoing project where I’ve been analyzing and mapping Singapore's bus routes using real-time data to figure out the best way to visit every bus stop.
                     </li>
                     <li>
-                        <a href="homelab.html">My Homelab</a>: A breakdown of my self-hosted infrastructure, hardware specs, and services running across my custom servers and network stack.
+                        <a href="cjsonparser_project.html">C JSON Parser</a>: An ongoing C-based JSON parser built from scratch, designed to read, parse, and handle JSON data. This project is a fun dive into systems programming, as well as learning how to handle JSON data from scratch.
                     </li>
+
                 </ul>
                 <p>
-                <a href="projects.html">Full List of projects</a>.
+                <a href="projects.html">Full List of projects → </a>
                 </p>
             </section>
 
-            <section id="inspirations">
-                <h2>Site Design Inspirations</h2>
+            <section>
+                <h2>Homelab</h2>
                 <p>
-                This site is intentionally simple — no frameworks, no dark patterns, no extra JavaScript. Just good old HTML, some light CSS and Vim's auto indent to me sane.
-                </p>
-                <p>
-                The structure is inspired by <a href="https://www.stroustrup.com/" target="_blank">Bjarne Stroustrup’s website</a>, for its timeless text-first clarity.
-                I also borrowed from <a href="https://www.mcmaster.com/" target="_blank">McMaster-Carr</a> — not in style, but in attitude: get to the point fast, no distractions.
+                I run self-hosted services in my homelab built from the ground up — full of services I use daily like git and jellyfin, networks I broke and fixed,
+                and more cost than I'd like to admit. It started with building a 'cold' raid-10 windows machine, to a FreeNAS/TrueNAS machine using second hand parts,
+                and has turned into an ecosystem of different machines and networking gear.
                 </p>
                 <p>
-                It’s built the same way I like writing code and solving problems: start small and from scratch, don’t hide complexity behind tooling, and make sure it works offline.
+                From NAS and Docker orchestration to VLANs, WireGuard tunnels, DNS layering, media and game servers; it’s where I experiment and learn outside of the University.
+                And of course occasionally break my own internet (prep rollbacks and don't prematurely set a non functioning DNS resolver or DNS server or delete them by accident - Its an experience itself to
+                have internet and no access).
                 </p>
-                <p>
-                If something loads slowly, that’s probably on me.
-                </p>
-                <p>
-                This site is currently hosted on Linode until I figure out how to securely self-host it from my homelab.
-                </p>
-            </section>
+                <p><a href="homelab.html">Full List of Homelab stuff</a>: A breakdown of my self-hosted infrastructure, hardware specs, and services running across my custom servers and network stack.</p>
 
-            <section id="setup">
-                <h2>Setup</h2>
-                <p>
-                I built my own custom PC to handle everything from programming and simulations to hardware tinkering. It’s powered by a Ryzen 9 5950X, 32GB DDR4 3600 CL14, and a Sapphire NITRO+ AMD Radeon RX 7900 XTX GPU. 
-                </p>
-                <p>I mostly work on projects in using vim in Debian 12 through WSL in my desktop, and I swap between Windows 11, Debian 12, Ubuntu 22.04 and Arch on my laptops on the go.
-                <br>
-                <a href="setup.html">Check out the full details of my setup here</a>.
-                </p>
+                <section id="inspirations">
+                    <h2>Site Design Inspirations</h2>
+                    <p>
+                    This site is intentionally simple — no frameworks, no dark patterns, no extra JavaScript. Just good old HTML, some light CSS and Vim's auto indent to me sane.
+                    </p>
+                    <p>
+                    No fancy graphics, no latest trends, just what I hope is easy to access and read.
+                    </p>
+                    <p>
+                    The structure is inspired by <a href="https://www.stroustrup.com/" target="_blank">Bjarne Stroustrup’s website</a>, for its timeless text-first clarity.
+                    I also borrowed from <a href="https://www.mcmaster.com/" target="_blank">McMaster-Carr</a> — not in style, but in attitude: get to the point fast, no distractions.
+                    </p>
+                    <p>
+                    It’s built the same way I like writing code and solving problems: start small and from scratch, don’t hide complexity behind tooling, and make sure it works offline.
+                    </p>
+                    <p>
+                    If something loads slowly, that’s probably on me.
+                    </p>
+                    <p>
+                    This site is currently hosted on Linode until I figure out how to securely self-host it from my homelab.
+                    </p>
+                </section>
 
-                <h3>Comfort Languages:</h3>
-                <p>C, Python 3, Java</p>
+                <section id="setup">
+                    <h2>Setup</h2>
+                    <p>
+                    I built my own custom PC to handle everything from programming and simulations to hardware tinkering. It’s powered by a 5950X, 32GB, and a 7900 XTX. 
+                    </p>
+                    <p>I mostly work on projects using vim in Debian 12 through WSL on Windows 11, and I swap between Windows 11, Debian 12, Ubuntu 22.04 and Arch on my laptops on the go.
+                    </p>
+                    <p>
+                    <a href="setup.html">Check out the full details of my setup here → </a>
+                    </p>
 
-                <h3>Software stuff:</h3>
-                <p>Git, Vim, tmux</p>
+                    <h3>Comfort Languages:</h3>
+                    <p>C, Python 3, Java</p>
 
-                <h3>Hardware:</h3>
-                <p>ESP32, Arduino, Raspberry Pi, 3D Printing</p>
-            </section>
+                    <h3>Software stuff:</h3>
+                    <p>Git, Vim, tmux</p>
 
-            <section id="recommended-readings">
-                <h2>Books I've Read (or Am Reading)</h2>
-                <p>A random collection of books — technical, philosophical, casual, or just thought-provoking. No particular order.</p>
+                    <h3>Hardware:</h3>
+                    <p>ESP32, Arduino, Raspberry Pi, 3D Printing</p>
+                </section>
 
-                <ul>
-                    <li><em>The C Programming Language</em> – Kernighan & Ritchie</li>
-                    <li><em>Introduction to Algorithms</em> – Cormen, Leiserson, Rivest, Stein (CLRS)</li>
-                    <li><em>Meditations</em> – Marcus Aurelius</li>
-                </ul>
-            </section>
+                <section id="recommended-readings">
+                    <h2>Books I've Read (or Am Reading)</h2>
+                    <p>A random collection of books — technical, philosophical, casual, or just thought-provoking. No particular order.</p>
 
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>You can reach me via email at <a href="mailto:ryan_pek@mymail.sutd.edu.sg">ryan_pek@mymail.sutd.edu.sg</a>.</p>
-                <p>Check out my projects on <a href="https://github.com/rpeky" target="_blank">Github</a>.</p>
-                <p>Connect with me on <a href="https://www.linkedin.com/in/ryan-pek-2243a9320/" target="_blank">LinkedIn</a>.</p>
-                <p><br>
-                <a href="contact.html">More ways to contact me!</a>.
-                </p>
-            </section>
+                    <ul>
+                        <li><em>The C Programming Language</em> – Kernighan & Ritchie</li>
+                        <li><em>Introduction to Algorithms</em> – Cormen, Leiserson, Rivest, Stein (CLRS)</li>
+                        <li><em>Meditations</em> – Marcus Aurelius</li>
+                    </ul>
+                </section>
+
+                <section id="contact">
+                    <h2>Contact</h2>
+                    <p>You can reach me via email at <a href="mailto:ryan_pek@mymail.sutd.edu.sg">ryan_pek@mymail.sutd.edu.sg</a>.</p>
+                    <p>Check out my projects on <a href="https://github.com/rpeky" target="_blank">Github</a>.</p>
+                    <p>Connect with me on <a href="https://www.linkedin.com/in/ryan-pek-2243a9320/" target="_blank">LinkedIn</a>.</p>
+                    <p><br>
+                    <a href="contact.html">More ways to contact me!</a>
+                    </p>
+                </section>
         </main>
 
         <footer>
             <a href="#about">About</a> |
             <a href="resume.pdf" download>Résumé</a> |
             <a href="#projects">Projects</a> |
-            <a href="#setup">Setup</a> |
-            <a href="#recommended-readings">Books</a> |
+            <a href="homelab.html">Homelab</a> |
             <a href="#contact">Contact</a>
             <p>&copy; 2025 Ryan Pek</p>
         </footer>
