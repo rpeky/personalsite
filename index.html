@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="Homepage and portfolio site of Ryan Pek, 2nd year undergraduate, SUTD">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ryan Pek - Portfolio & CV</title>
+        <title>Ryan Pek - Portfolio & CV & Personal Site</title>
         <style>
 body {
     font-family: sans-serif;
@@ -114,6 +114,21 @@ body {
                 </p>
             </section>
 
+            <section>
+                <h2>Homelab</h2>
+                <p>
+                I run self-hosted services in my homelab built from the ground up — full of services I use daily like git and jellyfin, networks I broke and fixed,
+                and more cost than I'd like to admit. It started with building a 'cold' raid-10 windows machine, to a FreeNAS/TrueNAS machine using second hand parts,
+                and has turned into an ecosystem of different machines and networking gear.
+                </p>
+                <p>
+                From NAS and Docker orchestration to VLANs, WireGuard tunnels, DNS layering, media and game servers; it’s where I experiment and learn outside of the University.
+                And of course occasionally break my own internet (prep rollbacks and don't prematurely set a non functioning DNS resolver or DNS server or delete them by accident - Its an experience itself to
+                have internet and no access).
+                </p>
+                <p><a href="homelab.html">Full List of Homelab stuff</a>: A breakdown of my self-hosted infrastructure, hardware specs, and services running across my custom servers and network stack. Cood read if you have the time (imo), some of my pain points experienced while building, setting up and running the homelab, as well as my future plans with it.</p>
+            </section>
+
             <section id="projects">
                 <h2>What I'm Currently Working On</h2>
                 <ul>
@@ -134,84 +149,66 @@ body {
                 </p>
             </section>
 
-            <section>
-                <h2>Homelab</h2>
+            <section id="inspirations">
+                <h2>Site Design Inspirations</h2>
                 <p>
-                I run self-hosted services in my homelab built from the ground up — full of services I use daily like git and jellyfin, networks I broke and fixed,
-                and more cost than I'd like to admit. It started with building a 'cold' raid-10 windows machine, to a FreeNAS/TrueNAS machine using second hand parts,
-                and has turned into an ecosystem of different machines and networking gear.
+                This site is intentionally simple — no frameworks, no dark patterns, no extra JavaScript. Just good old HTML, some light CSS and Vim's auto indent to me sane.
                 </p>
                 <p>
-                From NAS and Docker orchestration to VLANs, WireGuard tunnels, DNS layering, media and game servers; it’s where I experiment and learn outside of the University.
-                And of course occasionally break my own internet (prep rollbacks and don't prematurely set a non functioning DNS resolver or DNS server or delete them by accident - Its an experience itself to
-                have internet and no access).
+                No fancy graphics, no latest trends, just what I hope is easy to access and read.
                 </p>
-                <p><a href="homelab.html">Full List of Homelab stuff</a>: A breakdown of my self-hosted infrastructure, hardware specs, and services running across my custom servers and network stack.</p>
+                <p>
+                The structure is inspired by <a href="https://www.stroustrup.com/" target="_blank">Bjarne Stroustrup’s website</a>, for its timeless text-first clarity.
+                I also borrowed from <a href="https://www.mcmaster.com/" target="_blank">McMaster-Carr</a> — not in style, but in attitude: get to the point fast, no distractions.
+                </p>
+                <p>
+                <a href="sitedesign.html">More about the Site → </a>
+                </p>
+            </section>
 
-                <section id="inspirations">
-                    <h2>Site Design Inspirations</h2>
-                    <p>
-                    This site is intentionally simple — no frameworks, no dark patterns, no extra JavaScript. Just good old HTML, some light CSS and Vim's auto indent to me sane.
-                    </p>
-                    <p>
-                    No fancy graphics, no latest trends, just what I hope is easy to access and read.
-                    </p>
-                    <p>
-                    The structure is inspired by <a href="https://www.stroustrup.com/" target="_blank">Bjarne Stroustrup’s website</a>, for its timeless text-first clarity.
-                    I also borrowed from <a href="https://www.mcmaster.com/" target="_blank">McMaster-Carr</a> — not in style, but in attitude: get to the point fast, no distractions.
-                    </p>
-                    <p>
-                    It’s built the same way I like writing code and solving problems: start small and from scratch, don’t hide complexity behind tooling, and make sure it works offline.
-                    </p>
-                    <p>
-                    If something loads slowly, that’s probably on me.
-                    </p>
-                    <p>
-                    This site is currently hosted on Linode until I figure out how to securely self-host it from my homelab.
-                    </p>
-                </section>
+            <section id="setup">
+                <h2>Setup</h2>
+                <p>
+                I built my own custom PC to handle everything from programming and simulations to hardware tinkering. It’s powered by a 5950X, 32GB, and a 7900 XTX. 
+                </p>
+                <p>I mostly work on projects using vim in Debian 12 through WSL on Windows 11, and I swap between Windows 11, Debian 12, Ubuntu 22.04 and Arch on my laptops on the go.
+                </p>
+                <p>
+                <a href="setup.html">Check out the full details of my setup here → </a>
+                </p>
 
-                <section id="setup">
-                    <h2>Setup</h2>
-                    <p>
-                    I built my own custom PC to handle everything from programming and simulations to hardware tinkering. It’s powered by a 5950X, 32GB, and a 7900 XTX. 
-                    </p>
-                    <p>I mostly work on projects using vim in Debian 12 through WSL on Windows 11, and I swap between Windows 11, Debian 12, Ubuntu 22.04 and Arch on my laptops on the go.
-                    </p>
-                    <p>
-                    <a href="setup.html">Check out the full details of my setup here → </a>
-                    </p>
+                <h3>Comfort Languages:</h3>
+                <p>C, Python 3, Java</p>
 
-                    <h3>Comfort Languages:</h3>
-                    <p>C, Python 3, Java</p>
+                <h3>Software stuff:</h3>
+                <p>Git, Vim, tmux</p>
 
-                    <h3>Software stuff:</h3>
-                    <p>Git, Vim, tmux</p>
+                <h3>Hardware:</h3>
+                <p>ESP32, Arduino, Raspberry Pi, 3D Printing</p>
+            </section>
 
-                    <h3>Hardware:</h3>
-                    <p>ESP32, Arduino, Raspberry Pi, 3D Printing</p>
-                </section>
+            <section id="recommended-readings">
+                <h2>Books I've Read (or Am Reading)</h2>
+                <p>A random collection of books — technical, philosophical, casual, or just thought-provoking. No particular order.</p>
 
-                <section id="recommended-readings">
-                    <h2>Books I've Read (or Am Reading)</h2>
-                    <p>A random collection of books — technical, philosophical, casual, or just thought-provoking. No particular order.</p>
+                <ul>
+                    <li><em>The C Programming Language</em> – Kernighan & Ritchie</li>
+                    <li><em>Introduction to Algorithms</em> – Cormen, Leiserson, Rivest, Stein (CLRS)</li>
+                    <li><em>UNIX Systems Programming</em> – Kay A. Robbins & Steven Robbins</li>
+                    <li><em>Digraphs: Theory, Algorithms and Applications</em> – Jørgen Bang-Jensen & Gregory Z. Gutin</li>
+                    <li><em>Meditations</em> – Marcus Aurelius</li>
+                </ul>
+            </section>
 
-                    <ul>
-                        <li><em>The C Programming Language</em> – Kernighan & Ritchie</li>
-                        <li><em>Introduction to Algorithms</em> – Cormen, Leiserson, Rivest, Stein (CLRS)</li>
-                        <li><em>Meditations</em> – Marcus Aurelius</li>
-                    </ul>
-                </section>
-
-                <section id="contact">
-                    <h2>Contact</h2>
-                    <p>You can reach me via email at <a href="mailto:ryan_pek@mymail.sutd.edu.sg">ryan_pek@mymail.sutd.edu.sg</a>.</p>
-                    <p>Check out my projects on <a href="https://github.com/rpeky" target="_blank">Github</a>.</p>
-                    <p>Connect with me on <a href="https://www.linkedin.com/in/ryan-pek-2243a9320/" target="_blank">LinkedIn</a>.</p>
-                    <p><br>
-                    <a href="contact.html">More ways to contact me!</a>
-                    </p>
-                </section>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>You can reach me via email at <a href="mailto:ryan_pek@mymail.sutd.edu.sg">ryan_pek@mymail.sutd.edu.sg</a>.</p>
+                <p>Check out my projects on <a href="https://github.com/rpeky" target="_blank">Github</a>.</p>
+                <p>Connect with me on <a href="https://www.linkedin.com/in/ryan-pek-2243a9320/" target="_blank">LinkedIn</a>.</p>
+                <p><br>
+                <a href="contact.html">More ways to contact me!</a>
+                </p>
+            </section>
         </main>
 
         <footer>

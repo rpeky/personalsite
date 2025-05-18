@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="TrueNAS Server - Ryan Pek Homelab">
-        <link rel="preload" as="image" href="images/nasdecriptionv2.jpg">
+        <link rel="preload" as="image" href="images/truenasv4.webp">
         <title>TrueNAS Server — Ryan Pek</title>
         <style>
 body {
@@ -51,6 +51,7 @@ body {
             height: auto;
             display: block;
             margin: 1em auto;
+        }
 
         h1 {
             text-align: center;
@@ -85,6 +86,18 @@ body {
             text-decoration: underline;
         }
 
+        figure {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+        figcaption {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 0.5em;
+        }
+
         footer a {
             color: #007BFF;
             margin: 0 10px;
@@ -108,23 +121,28 @@ body {
             <section>
                 <h2>TrueNAS Server</h2>
                 <p>Main NAS system for storage, media serving, and data redundancy.</p>
-                <p>Access through VLAN 30 and VLAN 40</p>
+                <p>Mirrored boot drives, pools configured as striped mirrors. From past experience of a single drive failing from pool 1, the rebuilding took slightly less than a day when I added a new drive to replace the dead one. NAS was still operational with one drive down, although I reduced my write and retrieval activities until the replacement drive arrived.</p>
+                <p>Access through VLAN 30 (dedicated NAS subnet for future storage expansion) and VLAN 40 (for network management)</p>
+                <figure>
+                    <img src="images/truenasv4.webp" alt="NAS breakdown and cost (SGD)" />
+                    <figcaption>Colourful breakdown of the core of my homelab</figcaption>
+                </figure>
             </section>
 
             <section>
                 <h2>Hardware</h2>
-                <img src="images/nasdecriptionv2.webp" alt="NAS breakdown and cost (SGD)" />
                 <ul>
                     <li><strong>CPU:</strong> Intel Core i5-10400</li>
                     <li><strong>RAM:</strong> 64 GB DDR4</li>
                     <li><strong>NICs:</strong> 1GbE onboard + 5Gbps Aquantia PCIe</li>
                     <li><strong>Storage Pools:</strong>
                         <ul>
-                            <li>Pool1: 4×10TB (striped mirror)</li>
-                            <li>Pool2: 2×12TB (striped mirror)</li>
+                            <li>Boot: 2x256GB (mirrored)</li>
+                            <li>Pool1 (Peky-1): 4×10TB (striped mirror)</li>
+                            <li>Pool2 (Peky-2): 2×12TB (striped mirror)</li>
                         </ul>
                     </li>
-                    <li>Estimated cost under $2000</li>
+                    <li>Estimated cost under $2000, my lovely monster stitched together with many second hand parts</li>
                 </ul>
             </section>
 
@@ -133,7 +151,7 @@ body {
                 <ul>
                     <li>TrueNAS Core (ZFS)</li>
                     <li>NFS exports to Debian Server & Proxmox via 5GbE NIC for homelab network</li>
-                    <li>SMB exports via onboard 1GbE NIC for family network</li>
+                    <li>SMB exports via onboard 1GbE NIC for family network to provide family with Windows NTFS Network Drive</li>
                     <li>Snapshot-based backup and scrub scheduling</li>
                     <li>Proxmox VM NFS storage</li>
                 </ul>
