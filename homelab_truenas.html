@@ -45,6 +45,12 @@ body {
             background-color: #fdfdfd;
         }
 
+        img {
+            max-width: 800px;
+            height: auto;
+            display: block;
+            margin: 1em auto;
+
         h1 {
             text-align: center;
             font-size: 2.5em;
@@ -101,11 +107,12 @@ body {
             <section>
                 <h2>TrueNAS Server</h2>
                 <p>Main NAS system for storage, media serving, and data redundancy.</p>
-                <p>Exists in VLAN 30</p>
+                <p>Access through VLAN 30 and VLAN 40</p>
             </section>
 
             <section>
                 <h2>Hardware</h2>
+                <img src="images/nasdecriptionv2.jpg" alt="NAS breakdown and cost (SGD)" />
                 <ul>
                     <li><strong>CPU:</strong> Intel Core i5-10400</li>
                     <li><strong>RAM:</strong> 64 GB DDR4</li>
@@ -116,6 +123,7 @@ body {
                             <li>Pool2: 2×12TB (striped mirror)</li>
                         </ul>
                     </li>
+                    <li>Estimated cost under $2000</li>
                 </ul>
             </section>
 
@@ -123,7 +131,8 @@ body {
                 <h2>Services</h2>
                 <ul>
                     <li>TrueNAS Core (ZFS)</li>
-                    <li>NFS exports to Debian Server & Jellyfin</li>
+                    <li>NFS exports to Debian Server & Proxmox via 5GbE NIC for homelab network</li>
+                    <li>SMB exports via onboard 1GbE NIC for family network</li>
                     <li>Snapshot-based backup and scrub scheduling</li>
                     <li>Proxmox VM NFS storage</li>
                 </ul>
