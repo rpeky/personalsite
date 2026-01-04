@@ -160,11 +160,10 @@
                 problems first. 18 cycles of memory training made little sense, but what was less intuitive to me was
                 disabling CSM (compatability support module) to get a P2200 card to work with the B450M board the Debian
                 server was on.</p>
+            <p>There are a couple of RPI 5 that I haven't gotten deciding what to set up in my small 10U rack and I'll
+                update here as I eventually get to it.</p>
             <p>To be honest, the homelab has been my way of diving headfirst into learning real-world networking and
                 systems architecture outside of formal education, applying and testing concepts I come across.</p>
-            <p>Currently I am exploring using ansible and terraform to define the states of my lab environment, as well
-                as looking into Jenkins/AWX to run and apply the configurations once pushed to my internal Gitea.</p>
-            <p><a href="homelab_old.html">Legacy homelab state</a>
         </section>
 
         <section id="devices">
@@ -178,9 +177,8 @@
                 <li><a href="homelab_truenas.html">TrueNAS Server</a></li>
                 <li><a href="homelab_debian.html">Debian Server</a></li>
                 <li><a href="homelab_cold.html">Cold Backup Server</a></li>
-                <li><a href="homelab_router.html">Router</a></li>
-                <li><a href="homelab_switch.html">Switch</a></li>
-                <li><a href="homelab_z640.html">Z640 Server</a></li>
+                <li><a href="homelab_router.html">MikroTik Router</a></li>
+                <li><a href="homelab_switch.html">Managed Switch</a></li>
             </ul>
         </section>
 
@@ -188,50 +186,30 @@
             <h2>Homelab Network Architecture</h2>
             <p>The homelab network is supposed to be logically and physically segmented from the main household (family)
                 network to ensure isolation, control, and scalability. (also so that I can't accidentally take out my
-                family's internet)
-            </p>
-            <p>I'm not a professional or even trained in networking (at the time of writing 2026, I built this network
-                from scratch through trial and error, googling, and begging ChatGPT/Claude for sources and examples to
-                learn from - have never taken any courses or modules on networking yet).
-            </p>
-            <p>I do have some plans to test configurations in an EVE-NG VM in my cluster to pre-test configurations and
-                different connections/topologies once I get to importing the network device images. The VM has already
-                been set up end 2025 and looks promising to run hands on tests and break things in a virtualised
-                environment.
-            </p>
-            <p>Future expansions include hosting this site itself, and other public facing services via VPN tunnel to
-                a proxy VPS for an additional layer of segregation. I have already tested running a VPS proxy to forward
-                and masquerade traffic to a VLAN isolated VM running a Minecraft server, and it seems that the
-                configuration does work for multiple users accessing the server concurrently. Hosting this site from my
-                own servers looks promising based on the minecraft experiment. This should relegate the VPS role to just
-                be an anchor point to forward/receive/masquerade data from my homelab, reduce compute usage to
-                processing traffic, should likely just optimize VPS sourcing for server uptime, network bandwith and
-                throughput.
-            </p>
+                family's internet)</p>
+            <p>I'm not a professional or even trained in networking (at the time of writing 2025, I built this network
+                from scratch through trial and error, googling, and begging ChatGPT for sources and examples to learn
+                from - have never taken any courses or modules on networking yet) </p>
 
             <h3>Physical and Routing seperation</h3>
             <ul>
-                <li>The <strong>Singtel ONR Nokia XS-240X-A</strong> router provided by the ISP acts as the default
-                    gateway for the family
+                <li>The <strong>Singtel ONR HG8244H</strong> router provided by the ISP (honestly this ONR's vendor
+                    locks and limitations are the bane of my existance) acts as the default gateway for the family
                     network.</li>
-                <li>This router only handles the default <code>192.168.1.0/24</code> subnet, used for general internet
-                    access
+                <li>This router only handles the <code>192.168.1.0/24</code> subnet, used for general internet access
                     and connected home devices.</li>
-                <li>A CAT6 cable connects the ONR's 5GbE port to my <strong>MikroTik RB5009UG+S+IN</strong>'s 2.5GbE
-                    port, which functions as the core router for the homelab.</li>
-                <li>The MikroTik router does not route traffic from the ONR LAN to the homelab VLANs/subnets, to segment
-                    my homelab
-                    traffic from home users, preventing outages.</li>
-                <li>I have an additional <strong>MikroTik CRS310-8G+2S+IN</strong> that connects to the RB5009 via DAC
-                    over the SFP+ port for a 10GbE trunk, router on stick configuration.</li>
-                <li>Accurate as of 24 Dec 2025</li>
+                <li>Two Cat6 cables from the ONR connect to a <strong>MikroTik hEX RB750Gr3</strong>, which functions as
+                    the core router for the homelab.</li>
+                <li>The MikroTik router does not route traffic from the ONR LAN to the homelab VLANs/subnets, providing
+                    strong network segmentation.</li>
+                <li>I have plans to upgrade from the RB750GR3 to the RB5009UG+S+IN for a stronger router, as well as
+                    getting an additional less restrictive 10G fibre plan</li>
             </ul>
 
             <h3>Homelab Network Segregation</h3>
             <p>The homelab network consists of multiple VLANs (802.1Q) and corresponding subnets carved out for
                 different purposes. Each VLAN is isolated via tagged switch ports, firewall rules, and interface
                 bindings.</p>
-            <p>There is a Wireguard tunnel to an external VPS
             <p> Although the WireGuard tunnel lands in the 10.0.100.0/24 subnet, I use MikroTik's firewall and routing
                 rules to control what internal VLANs can be accessed.
                 No homelab subnets are exposed directly to the internet.</p>
