@@ -23,40 +23,39 @@
     <main>
         <section>
     <h2>HP Z640 Workstation/Server</h2>
-    <p>Runs containerized services using Docker Compose for self-hosted infrastructure, monitoring, content management, and development.</p>
-    <p>Uses a mix of zfs stripped mirroring of the 4x4 TB WD Blue drives in the machine and NAS storage</p>
+    <p>Current proof of concept for my homelab, running proxmox as a hypervisor to run vms that make the core of my network, automation and services</p>
+    <p>Uses a mix of zfs stripped mirroring of the NVME drives on a x4 biurcation card in the machine, regular 2.5"" SSDs, and NAS storage</p>
+    <p><strong>Work in Progress Page</strong><p>
 </section>
 
 <h2>Hardware</h2>
 <ul>
-    <li>CPU: AMD Ryzen 5 5600G</li>
-    <li>RAM: 64 GB DDR4</li>
-    <li>Storage: 256 GB SSD</li>
-    <li>Storage: 4x 4 TB SSD</li>
+    <li>CPU: 2x E5-2670v3</li>
+    <li>RAM: 256 GB DDR4 RDIMM</li>
+    <li>Storage: 512GB BX500 SSD</li>
+    <li>Storage: 2TB BX500 SSD</li>
+    <li>Storage: Asus Hyper M.2 pcie4.0 x4 expansion card</li>
+    <li>Storage: 2x 4 TB 990 Evo Plus</li>
+    <li>Storage: 2x 2 TB 990 Pro</li>
 </ul>
 
-<h2>Active Docker Services</h2>
+<h2>Active Services</h2>
+Most if not all of my services are spun up using terraform, and configured with ansible scripts.
+Once I refactor the playbooks into proper playbook formatting, testing with AWX, and doing a full lab config/restore from the scripts.
+With the end goal of running the configuration on a purpose built server and provisioining that to achieve full functionality.
+
+<h3>Raw VMs</h3>
 <ul>
-    <li><strong>Shoko Server</strong> — Anime metadata manager and scraper</li>
-    <li><strong>Palworld</strong> — Dedicated game server</li>
-    <li><strong>Calibre & Calibre-Web</strong> — eBook management and web access</li>
-    <li><strong>Open WebUI</strong> — Frontend for AI model control (Ollama)</li>
-    <li><strong>Netdata</strong> — Real-time system monitoring</li>
-    <li><strong>Pi-hole & AdGuard Home</strong> — Network-wide ad/tracker blocking (dual setup)</li>
-    <li><strong>Unbound</strong> — Local DNS resolver backend</li>
-    <li><strong>Jellyfin</strong> — Media server for anime and videos</li>
-    <li><strong>Komga</strong> — Manga and comic book server</li>
-    <li><strong>Gitea</strong> — Self-hosted Git server (rootless)</li>
-    <li><strong>Ollama</strong> — Local LLM model backend</li>
-    <li><strong>Duplicati</strong> — Encrypted backups to TrueNAS and Cold Server</li>
-    <li><strong>Wiki.js</strong> — Markdown-based internal wiki</li>
-    <li><strong>Nginx</strong> — Reverse proxy for internal services</li>
+    <li>Recursive DNS combo - Adguard+Unbound</li>
+    <li>Authoratative DNS - BIND9</li>
+    <li>Internal Certs / reverse proxy - Caddy</li>
+    <li>Automation - Jenkins</li>
+    <li>Automation - Rancher (to manage k3s, and run AWX and its dependencies)</li>
+    <li>Monitoring - Prometheus / Grafana</li>
+    <li>Git - Gitea</li>
+    <li>Terraform worker node</li>
+    <li>Terraform worker node</li>
 </ul>
-<p>Services live on VLAN 10, some loose plan to migrate from <code>192.168.10.x</code> to <code>10.x.x.x</code> if I somehow run out of addresses.</p> 
-
-<section>
-    <p><a href="homelab.html">← Back to Homelab Index</a></p>
-</section>
 
     </main>
 
