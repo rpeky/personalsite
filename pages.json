@@ -1,0 +1,401 @@
+{
+  "index.html": {
+    "title": "Ryan Pek - Portfolio & CV & Personal Site",
+    "description": "Homepage and portfolio site of Ryan Pek",
+    "header_title": "Welcome",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/index.html",
+    "preload": "",
+    "nav": [
+      ["about.html", "About"],
+      ["assets/resume.pdf", "Résumé", "download"],
+      ["projects.html", "Projects"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["about.html", "About"],
+      ["assets/resume.pdf", "Résumé", "download"],
+      ["projects.html", "Projects"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "about.html": {
+    "title": "About — Ryan Pek",
+    "description": "More About Ryan Pek",
+    "header_title": "More About Me",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/about.html",
+    "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/me.webp\" type=\"image/webp\">",
+    "nav": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "contact.html": {
+    "title": "Contact — Ryan Pek",
+    "description": "Contact Ryan Pek",
+    "header_title": "Contact",
+    "header_subtitle": "",
+    "content_file": "content/contact.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"]
+    ],
+    "footer": [
+      ["index.html", "Home"]
+    ]
+  },
+
+  "projects.html": {
+    "title": "Projects — Ryan Pek",
+    "description": "Projects homepage - Ryan Pek",
+    "header_title": "Projects",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/projects.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "setup.html": {
+    "title": "Ryan Pek - Development Environment",
+    "description": "Ryan Pek's Development Environment, PC, Laptop, Server specifications",
+    "header_title": "My Development Environment",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/setup.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "sitedesign.html": {
+    "title": "Site Design — Ryan Pek",
+    "description": "Why this site is built simply and by hand",
+    "header_title": "Site Design",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/sitedesign.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "bookrecommendations.html": {
+    "title": "Book Recommendations — Ryan Pek",
+    "description": "Just a running list of books I like or found helpful",
+    "header_title": "Book list",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/bookrecommendations.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab.html": {
+    "title": "Homelab - Ryan Pek",
+    "description": "Homelab homepage",
+    "header_title": "Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab.html",
+    "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/homelab.webp\" type=\"image/webp\">",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html#devices", "Devices"],
+      ["homelab.html#network-architecture", "Network Architecture"],
+      ["homelab.html#remote-access", "Remote Access"],
+      ["homelab.html#upgrade-roadmap", "Upgrade Roadmap"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html#devices", "Devices"],
+      ["homelab.html#network-architecture", "Network Architecture"],
+      ["homelab.html#remote-access", "Remote Access"],
+      ["homelab.html#upgrade-roadmap", "Upgrade Roadmap"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_old.html": {
+    "title": "Legacy Homelab — Ryan Pek",
+    "description": "Older homelab write-up and architecture state",
+    "header_title": "Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_old.html",
+    "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/homelab.webp\" type=\"image/webp\">",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab_old.html#devices", "Devices"],
+      ["homelab_old.html#network-architecture", "Network Architecture"],
+      ["homelab_old.html#remote-access", "Remote Access"],
+      ["homelab_old.html#upgrade-roadmap", "Upgrade Roadmap"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab_old.html#devices", "Devices"],
+      ["homelab_old.html#network-architecture", "Network Architecture"],
+      ["homelab_old.html#remote-access", "Remote Access"],
+      ["homelab_old.html#upgrade-roadmap", "Upgrade Roadmap"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_router.html": {
+    "title": "Homelab Router - Mikrotik",
+    "description": "Router Hardware - Homelab router",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_router.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_switch.html": {
+    "title": "Homelab Switch",
+    "description": "Homelab hardware - switch",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_switch.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_truenas.html": {
+    "title": "TrueNAS Server — Ryan Pek",
+    "description": "TrueNAS Server - Ryan Pek Homelab",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_truenas.html",
+    "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/truenasv4.webp\" type=\"image/webp\">",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_debian.html": {
+    "title": "Debian Server — Ryan Pek",
+    "description": "Debian Server - Homelab main services server",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_debian.html",
+    "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/debianserver.webp\" type=\"image/webp\">",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_cold.html": {
+    "title": "Cold Backup Server — Ryan Pek",
+    "description": "Cold Backup Server - Ryan Pek Homelab",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_cold.html",
+    "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/coldstorage.webp\" type=\"image/webp\">",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "homelab_z640.html": {
+    "title": "POC Homelab Server— Ryan Pek",
+    "description": "Z640 Workstation - Ryan Pek Homelab",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_z640.html",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "bus_route_project.html": {
+    "title": "Singapore Bus Route Project - Ryan Pek",
+    "description": "Singapore Bus Route Project by Ryan Pek",
+    "header_title": "Singapore Bus Route Project",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/bus_route_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "cjsonparser_project.html": {
+    "title": "C JSON Parser Project - Ryan Pek",
+    "description": "C JSON Parser Project by Ryan Pek",
+    "header_title": "Json Parser",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/cjsonparser_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "cshell_project.html": {
+    "title": "Custom C Shell – Ryan Pek",
+    "description": "Custom C Shell by Ryan Pek",
+    "header_title": "Welcome",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/cshell_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "pathfinding_project.html": {
+    "title": "SUTD Pathfinding Project - Ryan Pek",
+    "description": "Pathfinding Project by Ryan Pek",
+    "header_title": "Welcome",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/pathfinding_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "secure_file_transfer_rewrite_c_project.html": {
+    "title": "SUTD 50.005 – Secure File Transfer in C (No Libs) — Ryan Pek",
+    "description": "From-scratch cryptographic file transfer in C",
+    "header_title": "Welcome",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/secure_file_transfer_rewrite_c_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "wandr_javaspring_project.html": {
+    "title": "Modular Travel Planner Backend 'Wandr' – Ryan Pek",
+    "description": "Modular Travel Planner Backend for Wandr",
+    "header_title": "Welcome",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/wandr_javaspring_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  }
+}
