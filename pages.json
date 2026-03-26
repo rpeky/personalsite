@@ -380,12 +380,12 @@
     ]
   },
 
-  "wandr_javaspring_project.html": {
+  "projects_wandr_javaspring_project.html": {
     "title": "Modular Travel Planner Backend 'Wandr' – Ryan Pek",
     "description": "Modular Travel Planner Backend for Wandr",
     "header_title": "Welcome",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/wandr_javaspring_project.html",
+    "content_file": "content/projects_wandr_javaspring_project.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
