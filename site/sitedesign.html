@@ -24,13 +24,25 @@
 
     <h2>Site Design</h2>
     <p>
-    It’s built the same way I like writing code and solving problems: start small and from scratch, don’t hide complexity behind tooling, and make sure it works offline.
+        It’s built the same way I like writing code and solving problems: 
+        start small and from scratch, don’t hide complexity behind tooling, and make sure it works offline.
     </p>
     <p>
-    If something loads slowly, that’s probably on me.
+        If something loads slowly, that’s probably on me.
     </p>
     <p>
-    This site is currently hosted on Linode until I figure out how to securely self-host it from my homelab.
+        This site is currently hosted on Linode until I figure out how to securely self-host it from my homelab.
+    </p>
+    <p>
+        There is just something nice about having just having a website that 
+        looks like a text document.
+    </p>
+    <p>
+        If we look at Stroustrup’s or the McMaster-Carr website, they just 
+        have everything accesisble at a glance.
+        Both sites look information dense but because there are so little elements 
+        or moving parts in the page, it is actually pretty easy to understand
+        what is going on at a glance.
     </p>
 </section>
 
@@ -38,7 +50,9 @@
     <h2>Editing This Site with Vim</h2>
 
     <p>
-    All the HTML and CSS for this site is written by hand using Vim with a minimal setup — no frameworks, no IDE bloat, just raw files, a questionable (because I have no clue how python implements it) python abstracted setup of a http server and keystrokes. Below is my vimrc at the time of writing this site:
+        All the HTML and CSS for this site is written by hand using Vim with a minimal setup — no frameworks,
+        no IDE bloat, just raw files, a questionable (because I have no clue how python implements it)
+        python abstracted setup of a http server and keystrokes. Below is my vimrc at the time of writing this site:
     </p>
 
     <pre><code>
@@ -63,14 +77,18 @@
     colorscheme slate
     </code></pre>
 
-    <p>Bash script I wrote to view the changes and run on a tmux pane, then switch to and ctrl-z the editing pane to modify the site on fullscreen:</p>
+    <p>
+        Quick and dirty script I wrote to view the changes and run on a tmux pane,
+        then switch to and ctrl-z the editing pane to modify the site on fullscreen:
+    </p>
     <pre><code>
     #!/bin/bash
     python3 -m http.server 8000
     </code></pre>
 
     <p>
-    I write everything manually, treating HTML and CSS like LaTeX — structured, minimal, and readable. No build step, no minifiers, just <code>:w</code> and loads of <code>:vsp</code> to view other pages in split.
+        I write everything manually, treating HTML and CSS like LaTeX — structured, minimal, and readable.
+        No build step, no minifiers, just <code>:w</code> and loads of <code>:vsp</code> to view other pages in split.
     </p>
 </section>
 

@@ -7,15 +7,11 @@
     "content_file": "content/index.html",
     "preload": "",
     "nav": [
-      ["about.html", "About"],
-      ["assets/resume.pdf", "Résumé", "download"],
       ["projects.html", "Projects"],
       ["homelab.html", "Homelab"],
       ["contact.html", "Contact"]
     ],
     "footer": [
-      ["about.html", "About"],
-      ["assets/resume.pdf", "Résumé", "download"],
       ["projects.html", "Projects"],
       ["homelab.html", "Homelab"],
       ["contact.html", "Contact"]
@@ -51,23 +47,6 @@
     ],
     "footer": [
       ["index.html", "Home"]
-    ]
-  },
-
-  "projects.html": {
-    "title": "Projects — Ryan Pek",
-    "description": "Projects homepage - Ryan Pek",
-    "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/projects.html",
-    "preload": "",
-    "nav": [
-      ["index.html", "Home"],
-      ["contact.html", "Contact"]
-    ],
-    "footer": [
-      ["index.html", "Home"],
-      ["contact.html", "Contact"]
     ]
   },
 
@@ -134,7 +113,7 @@
       ["homelab.html#devices", "Devices"],
       ["homelab.html#network-architecture", "Network Architecture"],
       ["homelab.html#remote-access", "Remote Access"],
-      ["homelab.html#upgrade-roadmap", "Upgrade Roadmap"],
+      ["homelab.html#upgrade-roadmap", "Upgrades"],
       ["contact.html", "Contact"]
     ],
     "footer": [
@@ -142,7 +121,7 @@
       ["homelab.html#devices", "Devices"],
       ["homelab.html#network-architecture", "Network Architecture"],
       ["homelab.html#remote-access", "Remote Access"],
-      ["homelab.html#upgrade-roadmap", "Upgrade Roadmap"],
+      ["homelab.html#upgrade-roadmap", "Upgrades"],
       ["contact.html", "Contact"]
     ]
   },
@@ -285,12 +264,29 @@
     ]
   },
 
-  "bus_route_project.html": {
+  "projects.html": {
+    "title": "Projects — Ryan Pek",
+    "description": "Projects homepage - Ryan Pek",
+    "header_title": "Projects",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/projects.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "projects_bus_route_project.html": {
     "title": "Singapore Bus Route Project - Ryan Pek",
     "description": "Singapore Bus Route Project by Ryan Pek",
-    "header_title": "Singapore Bus Route Project",
+    "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/bus_route_project.html",
+    "content_file": "content/projects_bus_route_project.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
@@ -304,12 +300,12 @@
     ]
   },
 
-  "cjsonparser_project.html": {
+  "projects_cjsonparser_project.html": {
     "title": "C JSON Parser Project - Ryan Pek",
     "description": "C JSON Parser Project by Ryan Pek",
-    "header_title": "Json Parser",
+    "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/cjsonparser_project.html",
+    "content_file": "content/projects_cjsonparser_project.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
@@ -323,12 +319,12 @@
     ]
   },
 
-  "cshell_project.html": {
+  "projects_cshell_project.html": {
     "title": "Custom C Shell – Ryan Pek",
     "description": "Custom C Shell by Ryan Pek",
-    "header_title": "Welcome",
+    "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/cshell_project.html",
+    "content_file": "content/projects_cshell_project.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
@@ -342,12 +338,12 @@
     ]
   },
 
-  "pathfinding_project.html": {
+  "projects_pathfinding_project.html": {
     "title": "SUTD Pathfinding Project - Ryan Pek",
     "description": "Pathfinding Project by Ryan Pek",
-    "header_title": "Welcome",
+    "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/pathfinding_project.html",
+    "content_file": "content/projects_pathfinding_project.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
@@ -361,12 +357,12 @@
     ]
   },
 
-  "secure_file_transfer_rewrite_c_project.html": {
+  "projects_secure_file_transfer_rewrite_c_project.html": {
     "title": "SUTD 50.005 – Secure File Transfer in C (No Libs) — Ryan Pek",
     "description": "From-scratch cryptographic file transfer in C",
-    "header_title": "Welcome",
+    "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
-    "content_file": "content/secure_file_transfer_rewrite_c_project.html",
+    "content_file": "content/projects_secure_file_transfer_rewrite_c_project.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
@@ -383,9 +379,47 @@
   "projects_wandr_javaspring_project.html": {
     "title": "Modular Travel Planner Backend 'Wandr' – Ryan Pek",
     "description": "Modular Travel Planner Backend for Wandr",
-    "header_title": "Welcome",
+    "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_wandr_javaspring_project.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "projects_miniraft.html": {
+    "title": "Miniraft",
+    "description": "Mini Raft implementation in Golang, sections 5.1-5.3 in the Raft paper",
+    "header_title": "Projects",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/projects_miniraft.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "projects_minichord.html": {
+    "title": "Minichord",
+    "description": "Mini Chord implementation",
+    "header_title": "Projects",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/projects_minichord.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],
