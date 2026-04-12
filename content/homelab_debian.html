@@ -1,37 +1,92 @@
 <section>
     <h2>Debian Server</h2>
-    <p>Runs containerized services using Docker Compose for self-hosted infrastructure, monitoring, content management, and development.</p>
-    <p>Uses a mix of zfs stripped mirroring of the 4x4 TB WD Blue drives in the machine and NAS storage</p>
-    <p>Originally I bought a SATA3 M.2 SSD for the boot drive, but due to motherboard limitations of how the chipset <a href="https://www.asrock.com/mb/AMD/B450M%20Pro4%20R2.0/index.asp#Specification">handles SATA (see storage)</a> (i.e. M2_1 is PCIE only, M2_2 and SATA_3 shares data lanes and affected my striped mirror configuration) I had to swap to an NVMe drive in M2_1.</p>
+    <p>
+        Runs containerized services using Docker Compose for self-hosted 
+        infrastructure, monitoring, content management, and development.
+    </p>
+    
+    <p>
+        Uses a mix of zfs stripped mirroring of the 4x4 TB WD Blue drives in 
+        the machine and NAS storage
+    </p>
+    
+    <p>
+        Originally I bought a SATA3 M.2 SSD for the boot drive, but due to 
+        motherboard limitations of how the chipset 
+        <a href="https://www.asrock.com/mb/AMD/B450M%20Pro4%20R2.0/index.asp#Specification">
+            handles SATA (see storage)</a> 
+        (i.e. M2_1 is PCIE only, M2_2 and SATA_3 shares data lanes and 
+        affected my striped mirror configuration) I had to swap to an 
+        NVMe drive in M2_1.
+    </p>
+
     <figure>
         <img src="assets/images/debianserver.webp" alt="Debian Server breakdown and cost (SGD)" />
         <figcaption>Colourful breakdown of my (mostly) docker machine</figcaption>
     </figure>
 </section>
 
-<h2>Hardware</h2>
-<ul>
-    <li>CPU: AMD Ryzen 5 5600G</li>
-    <li>RAM: 64 GB DDR4</li>
-    <li>Storage: 256 GB SSD</li>
-    <li>Storage: 4x 4 TB SSD</li>
-</ul>
+<section>
+<p>
+        My first server of any kind, initially built around 2020 using whatever
+        was cheap, a 3200g, 4x4TB WD blues, some ram. It ran Windows 10 with
+        the drives in a raid10 structure, permamently offline since its
+        purpose was to be a cold backup server (something like a large external
+        hard drive to backup files)
+</p> 
 
-<h2>Active Docker Services</h2>
-<ul>
-    <li><strong>Shoko Server</strong> — Anime metadata manager and scraper</li>
-    <li><strong>Palworld</strong> — Dedicated game server</li>
-    <li><strong>Calibre & Calibre-Web</strong> — eBook management and web access</li>
-    <li><strong>Open WebUI</strong> — Frontend for AI model control (Ollama)</li>
-    <li><strong>Netdata</strong> — Real-time system monitoring</li>
-    <li><strong>Pi-hole & AdGuard Home</strong> — Network-wide ad/tracker blocking (dual setup)</li>
-    <li><strong>Unbound</strong> — Local DNS resolver backend</li>
-    <li><strong>Jellyfin</strong> — Media server for anime and videos</li>
-    <li><strong>Komga</strong> — Manga and comic book server</li>
-    <li><strong>Gitea</strong> — Self-hosted Git server (rootless)</li>
-    <li><strong>Ollama</strong> — Local LLM model backend</li>
-    <li><strong>Duplicati</strong> — Encrypted backups to TrueNAS and Cold Server</li>
-    <li><strong>Wiki.js</strong> — Markdown-based internal wiki</li>
-    <li><strong>Nginx</strong> — Reverse proxy for internal services</li>
-</ul>
-<p>Services live on VLAN 10, some loose plan to migrate from <code>192.168.10.x</code> to <code>10.x.x.x</code> if I somehow run out of addresses.</p> 
+<p>
+        When the TrueNAS server was up, I converted it to my first homelab-like
+        deice, running docker services on it, getting some hands on trial and
+        error light sysadm work running debian 12, and it ran some simple
+        anime database and jellyfin, gitea, dns etc. First experimented with
+        trying out ZFS and VLANs on this machine. Good times.
+</p> 
+
+<p>
+        It eventually got upgraded with newer parts, and when I revamped the
+        homelab for the first time, this machine became the backup services / 
+        alternative domain name my dns pointed to. I had some fun trying to
+        migrate the data to the other devices.
+</p> 
+
+<p>
+        Currently, I'm planning to revamp everything again and shift this
+        server to either be a failover for core services or just run some
+        other sandboxed stuff. Maybe I'll host the website off this machine
+        with other stuff I want exposed.
+</p>
+</section>
+
+<section>
+    <h2>Hardware</h2>
+    <ul>
+        <li>CPU: AMD Ryzen 5 5600G</li>
+        <li>RAM: 64 GB DDR4</li>
+        <li>Storage: 256 GB SSD</li>
+        <li>Storage: 4x 4 TB SSD</li>
+    </ul>
+
+    <h2>Active Docker Services</h2>
+    <ul>
+        <li><strong>Shoko Server</strong> — Anime metadata manager and scraper</li>
+        <li><strong>Palworld</strong> — Dedicated game server</li>
+        <li><strong>Calibre & Calibre-Web</strong> — eBook management and web access</li>
+        <li><strong>Open WebUI</strong> — Frontend for AI model control (Ollama)</li>
+        <li><strong>Netdata</strong> — Real-time system monitoring</li>
+        <li><strong>Pi-hole & AdGuard Home</strong> — Network-wide ad/tracker blocking (dual setup)</li>
+        <li><strong>Unbound</strong> — Local DNS resolver backend</li>
+        <li><strong>Jellyfin</strong> — Media server for anime and videos</li>
+        <li><strong>Komga</strong> — Manga and comic book server</li>
+        <li><strong>Gitea</strong> — Self-hosted Git server (rootless)</li>
+        <li><strong>Ollama</strong> — Local LLM model backend</li>
+        <li><strong>Duplicati</strong> — Encrypted backups to TrueNAS and Cold Server</li>
+        <li><strong>Wiki.js</strong> — Markdown-based internal wiki</li>
+        <li><strong>Nginx</strong> — Reverse proxy for internal services</li>
+    </ul>
+
+    <p>
+        Services live on VLAN 10, some loose plan to migrate from <code>192.168.10.x</code> to <code>10.x.x.x</code> if I somehow run out of addresses.
+    </p> 
+</section>
+
