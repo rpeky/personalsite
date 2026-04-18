@@ -15,6 +15,7 @@
     </header>
 
     <nav>
+        <a href="about.html">About</a> |
         <a href="projects.html">Projects</a> |
         <a href="homelab.html">Homelab</a> |
         <a href="contact.html">Contact</a>
@@ -36,33 +37,46 @@
 
 <section>
     <h2>Homelab</h2>
-    <h4> I have recently revamped the networking in my homelab due to upgrading and migration of my router from
-        the RB750Gr3 to a RB5009, and
-        have yet to fully update the write up for it (even my ISP supplied ONR has changed due to contract
-        renewal)
-        so it may be a little outdated. The old configs and setup are still functional though, the changes are
-        mostly quality of life like revamping the VLAN planning, switch configs, firewall filters, new VPN
-        layout, IP subnet migrations, NIC upgrades to 2.5G and some other small stuff. I'll write a migration
-        article to consolidate
-        what I did and what I learnt for future reference.</h4>
     <p>
-        I run self-hosted services in my homelab built from the ground up — full of services I use daily like
-        git and jellyfin, networks I broke and fixed,
-        and more cost than I'd like to admit. It started with building a 'cold' raid-10 windows machine, to a
-        FreeNAS/TrueNAS machine using second hand parts,
+        I run self-hosted services in my homelab as a long term side project.
+        As much as possible, I tried building it from the ground up — running services I use daily like a
+        git server, jellyfin, automation controllers, internal networks I broke and fixed,
+        and more hardware and time cost than I'd like to admit.
+    </p>
+    <p>
+        It started with building a 'cold' windows configured raid-10 machine, to a
+        FreeNAS/TrueNAS machine using second hand parts, to a dedicated router,
         and has turned into an ecosystem of different machines and networking gear.
     </p>
     <p>
-        From NAS and Docker orchestration to VLANs, WireGuard tunnels, DNS layering, media and game servers;
+        From sourcing parts and building the physical servers, to Docker orchestration to VLANs, 
+        WireGuard tunnels, DNS layering, media and game servers;
         it’s where I experiment and learn outside of the University.
-        And of course occasionally break my own internet (prep rollbacks and don't prematurely set a non
+        I have on occasion broke my own internet (prep rollbacks and don't prematurely run an untested and non
         functioning DNS resolver or DNS server or delete them by accident - Its an experience itself to
-        have internet and no access).
+        have internet and no access), accidentally wrote over the zfs partition by duplicating over one
+        level too high.
+    </p>
+    <p>
+        It's a sort of playground to learn and run new technologies, as well as my own backyard to
+        consume the fruits of my labour.
+    </p>
+    <p>
+        I am currently in the midst of consolidating my internal services and writing ansible playbooks
+        for migration, fresh spin ups, updates etc. The scale and complexity on the different machines
+        is somewhat managable for now, but I suspect I am close to reaching some cognitive load limit
+        soon. I have some functional knowledge of AWX and Jenkins with internal git integration to
+        help with this problem, so expect some documentation, centralised planning and playbook / script
+        execution and gitops in the works.
     </p>
     <p><a href="homelab.html">Full List of Homelab stuff</a>: A breakdown of my self-hosted infrastructure,
-        hardware specs, and services running across my custom servers and network stack. Cool read if you have
-        the time (imo), some of my pain points experienced while building, setting up and running the homelab,
-        as well as my future plans with it.</p>
+        hardware specs, and services running across my custom servers and network stack. 
+    </p>
+    <p>
+        Cool read if you have the time (I spent quite some time on the write up), 
+        some of my pain points experienced while building, setting up and running the homelab, 
+        as well as my future plans with it.
+    </p>
 </section>
 
 <section id="projects">
@@ -72,10 +86,16 @@
         <li>
             <a href="projects_bus_route_project.html">Singapore Bus Route Project</a>: A fun ongoing hobby project where I’ve
             been analyzing and mapping Singapore's bus routes using real-time data to figure out the best way to
-            visit every bus stop.
+            visit every bus stop. Currently in the midst of planning a refactoring on paper and consolidation of the project.
         </li>
         <li>
-            <a href="homelab_z640.html">Homelab infrastructure automation</a>: Sandbox/POC machine for homelab automation before I get more permanent rack mounted solution. Currently most of my services run off single ansible playbooks, and my self-hosted services are being ran on this hardware. To migrate once hardware prices go down again.
+            <a href="homelab_z640.html">Homelab infrastructure automation</a>: Sandbox/POC machine for homelab automation before
+            I get more permanent rack mounted solution. The services and state of my homelab is starting to get too hard to manage,
+            with some stopgap procedures I ran fogotten cause of time, and the maintainence / upgrades taking longer to do.
+            I have started trying some automation via ansible and git to help with migration and maintainence issues.
+            Currently most of my services run off single ansible playbooks,
+            and my self-hosted services are being ran on this hardware. In the middle of planning to refactor to more standard 
+            best-practice ish formatting, and to migrate once hardware prices go down again.
         </li>
     </ul>
 </section>
@@ -127,8 +147,10 @@
         I built my own custom PC to handle everything from programming and simulations to hardware tinkering.
         It’s powered by a 5950X, 32GB, and a 7900 XTX.
     </p>
-    <p>I mostly work on projects using vim in Debian 12 through WSL on Windows 11, and I swap between Windows
-        11, Debian 12, Ubuntu 22.04 and Arch on my laptops on the go.
+    <p>
+        I mostly work in Debian 13 stable on my workstation and T480, most of my homelab vms are on Debian 
+        12 or 13 and the occasional Ubuntu Server. Some windows for my school work (so I can take the exam),
+        to access acrobat to sign off documents.
     </p>
     <p>
         <a href="setup.html">Check out the full details of my setup here → </a>
@@ -158,9 +180,11 @@
 </section>
 
 <section id="recommended-readings">
-    <h2>Books I've Read (or Am Reading)</h2>
+    <h2>Reading List</h2>
+
     <p>A random collection of books — technical, philosophical, casual, or just thought-provoking. No particular
-        order.</p>
+        order.
+    </p>
 
     <ul>
         <li><em>The C Programming Language</em> – Kernighan & Ritchie</li>
@@ -178,6 +202,7 @@
     </main>
 
     <footer>
+        <a href="about.html">About</a> |
         <a href="projects.html">Projects</a> |
         <a href="homelab.html">Homelab</a> |
         <a href="contact.html">Contact</a>

@@ -38,7 +38,8 @@
     <p>To be honest, the homelab has been my way of diving headfirst into learning real-world networking and
         systems architecture outside of formal education, applying and testing concepts I come across.</p>
     <p>Currently I am exploring using ansible and terraform to define the states of my lab environment, as well
-        as looking into Jenkins/AWX to run and apply the configurations once pushed to my internal Gitea.</p>
+        as looking into Jenkins/AWX to run and apply the configurations once pushed to my internal Gitea.
+    </p>
     <p><a href="homelab_old.html">Legacy homelab state</a>
 </section>
 
@@ -65,16 +66,19 @@
         network to ensure isolation, control, and scalability. (also so that I can't accidentally take out my
         family's internet)
     </p>
-    <p>I'm not a professional or even trained in networking (at the time of writing 2026, I built this network
+    <p>
+        I'm not a professional or even trained in networking (at the time of writing 2026, I built this network
         from scratch through trial and error, googling, and begging ChatGPT/Claude for sources and examples to
         learn from - have never taken any courses or modules on networking yet).
     </p>
-    <p>I do have some plans to test configurations in an EVE-NG VM in my cluster to pre-test configurations and
+    <p>
+        I do have some plans to test configurations in an EVE-NG VM in my cluster to pre-test configurations and
         different connections/topologies once I get to importing the network device images. The VM has already
         been set up end 2025 and looks promising to run hands on tests and break things in a virtualised
         environment.
     </p>
-    <p>Future expansions include hosting this site itself, and other public facing services via VPN tunnel to
+    <p>
+        Future expansions include hosting this site itself, and other public facing services via VPN tunnel to
         a proxy VPS for an additional layer of segregation. I have already tested running a VPS proxy to forward
         and masquerade traffic to a VLAN isolated VM running a Minecraft server, and it seems that the
         configuration does work for multiple users accessing the server concurrently. Hosting this site from my
@@ -89,25 +93,30 @@
         <li>The <strong>Singtel ONR Nokia XS-240X-A</strong> router provided by the ISP acts as the default
             gateway for the family
             network.</li>
-        <li>This router only handles the default <code>192.168.1.0/24</code> subnet, used for general internet
-            access
-            and connected home devices.</li>
+        <li>This router only handles the default ISP defined subnet, used for general internet
+            access and connected home devices (think CCTV, regular LAN, Wifi AP).</li>
         <li>A CAT6 cable connects the ONR's 5GbE port to my <strong>MikroTik RB5009UG+S+IN</strong>'s 2.5GbE
             port, which functions as the core router for the homelab.</li>
-        <li>The MikroTik router does not route traffic from the ONR LAN to the homelab VLANs/subnets, to segment
+        <li>The MikroTik router does not route traffic from the ONR LAN to the homelab VLANs/subnets, to isolate
             my homelab
-            traffic from home users, preventing outages.</li>
-        <li>I have an additional <strong>MikroTik CRS310-8G+2S+IN</strong> that connects to the RB5009 via DAC
+            traffic from home users, preventing outages when I make homelab network changes.</li>
+        <li>My main switch is a <strong>MikroTik CRS310-8G+2S+IN</strong> that connects to the RB5009 via DAC
             over the SFP+ port for a 10GbE trunk, router on stick configuration.</li>
-        <li>Accurate as of 24 Dec 2025</li>
+        <li>Accurate as of 18 Apr 2026</li>
     </ul>
 
     <h3>Homelab Network Segregation</h3>
-    <h4>This section is outdated, I am currently revamping the VLAN mappings - it seems that  that there is some edge case with my friends when they VPN in and there is some (or at least I suspect) IP conflict when I use the 192.168.x.x range [I have not validated if this is true, but it seems shifting to the 10.x.x.x range is a valid workaround from testing]</h4>
-    <p>The homelab network consists of multiple VLANs (802.1Q) and corresponding subnets carved out for
+    <p>
+        The homelab network consists of multiple VLANs (802.1Q) and corresponding subnets carved out for
         different purposes. Each VLAN is isolated via tagged switch ports, firewall rules, and interface
-        bindings.</p>
-    <p>There is a Wireguard tunnel to an external VPS
+        bindings.
+    </p>
+    <p>
+        For remote access, there is a Wireguard tunnel to a VPS acting as a sort of relay. 
+        Remote devices (peers) point to the VPS IP (mapped to a domain I own at a custom port), and this traffic gets
+        forwarded to my homelab based on some simple iptables rules. There are different wg interfaces for 
+        admin, friend use (limited VLAN access) etc and I manually manage the peer list.
+    </p>
     <p> Although the WireGuard tunnel lands in the 10.0.100.0/24 subnet, I use MikroTik's firewall and routing
         rules to control what internal VLANs can be accessed.
         No homelab subnets are exposed directly to the internet.</p>
@@ -128,49 +137,63 @@
             <tr>
                 <td>10</td>
                 <td>vlan10-servers</td>
-                <td>192.168.10.0/24</td>
+                <td>10.x.10.0/24</td>
                 <td>Main services (web apps, containers, internal APIs), mostly docker services</td>
-                <td>ether2</td>
+                <td>various</td>
             </tr>
             <tr>
                 <td>20</td>
                 <td>vlan20-compute</td>
-                <td>192.168.20.0/24</td>
+                <td>10.x.20.0/24</td>
                 <td>Compute machines (Proxmox VMs)</td>
-                <td>ether2</td>
+                <td>DAC2 (Switch)</td>
             </tr>
             <tr>
                 <td>30</td>
                 <td>vlan30-NAS</td>
-                <td>192.168.30.0/24</td>
+                <td>10.x.30.0/24</td>
                 <td>NAS dedicated subnet (ZFS storage, NFS, iSCSI, SMB for homelab)</td>
-                <td>ether2</td>
+                <td>ether3 (Switch)</td>
             </tr>
             <tr>
                 <td>40</td>
                 <td>vlan40-management</td>
-                <td>192.168.40.0/24</td>
+                <td>10.x.40.0/24</td>
                 <td>Management interfaces (IPMI, switch/router management IP)</td>
-                <td>ether2</td>
+                <td>ether7</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>vlan50-infra</td>
+                <td>10.x.50.0/24</td>
+                <td>A dedicated VLAN to isolate core infra (AWX, Bind9, Adguard/Unbound)</td>
+                <td>various</td>
+            </tr>
+            <tr>
+                <td>60</td>
+                <td>vlan60-torrents</td>
+                <td>10.x.60.0/24</td>
+                <td>For torrenting edge devices (RPI with killswitch)</td>
+                <td>ether6</td>
             </tr>
             <tr>
                 <td>90</td>
                 <td>vlan90-internet</td>
-                <td>192.168.90.0/24</td>
+                <td>10.x.90.0/24</td>
                 <td>WAN access (uplink to Singtel ONR)</td>
                 <td>ether2</td>
             </tr>
             <tr>
                 <td>110</td>
                 <td>vlan110-altserv</td>
-                <td>192.168.110.0/24</td>
+                <td>10.x.110.0/24</td>
                 <td>Alternate server subnet (testing nginx VLAN routing - failure)</td>
                 <td>ether2</td>
             </tr>
             <tr>
                 <td>—</td>
                 <td>wireguard1</td>
-                <td>10.0.100.0/24</td>
+                <td>10.x.x.0/24</td>
                 <td>Remote VPN access (WireGuard)</td>
                 <td>wireguard1</td>
             </tr>
@@ -184,7 +207,7 @@
             <tr>
                 <td>—</td>
                 <td>ISP LAN</td>
-                <td>192.168.1.0/24</td>
+                <td>192.168.x.0/24</td>
                 <td>Family network (served by Singtel ONR)</td>
                 <td>ether1</td>
             </tr>
@@ -204,9 +227,9 @@
     <section id="remote-access">
         <h2>Remote Access with WireGuard + AdGuard</h2>
 
-        <p>To access my homelab securely from outside networks, I use <strong>WireGuard</strong> for VPN
-            tunneling
-            and route all DNS traffic through <strong>AdGuard Home</strong>, which uses <strong>Unbound</strong>
+        <p>
+            To access my homelab securely from outside networks, I use <strong>WireGuard</strong> for VPN
+            tunneling and route all DNS traffic through <strong>AdGuard Home</strong>, which uses <strong>Unbound</strong>
             for encrypted upstream resolution.
         </p>
 
@@ -220,7 +243,9 @@
 
         <pre>
             [Client Device]
-            ↓ WireGuard VPN (10.0.100.x)
+            ↓ WireGuard VPN (10.x.x.x)
+            [VPS]
+            ↓ Forward via Seperate Tunnel (iptables rules)
             [MikroTik Router]
             ↓ VLAN Routing
             [AdGuard Home (DNS)]
@@ -228,10 +253,19 @@
             [Unbound (DoT upstreams)]
         </pre>
 
-        WireGuard provides a fast and lightweight tunnel into the <code>10.0.100.0/24</code> subnet
-        (interface <code>wireguard1</code>), routed internally by MikroTik. Each device is manually added via
-        public key,
-        and only the WireGuard port (UDP 51820) is exposed to the internet.
+        WireGuard provides a fast and lightweight tunnel into the <code>10.x.x.0/24</code> subnet
+        (interface <code>wireguard1</code>), routed internally by the RB5009. Each device is manually added via
+        public key in the peerlist on the VPS, and the VPS endpoint is behind a domain I own.
+        </p>
+
+        <p>
+            The intermediary VPS layer helps to solve a couple of problems. One of which is the frequent switching
+            (rotatioN) of residential IPs by the ISP, solving the issue of double NAT (I did not want to replace
+            the ISP router with my own -- My family still uses the regular ISP network), potential CGNAT issues,
+            and a static IP my domain can point to. It's a cheap 5 dollar/month nanode that purely handels this 
+            network filtering and forwarding job.
+            The peer list is still quite small and managable, but I might look at automating it via git changes,
+            though some form of secrets generation and replacement (maybe hashicorp valut) might be needed.
         </p>
 
         <p>
@@ -312,6 +346,8 @@
             <li>Break out critical services (AdGuard, Unbound, monitoring tools) onto a dedicated
                 <strong>Raspberry Pi 5</strong> for higher availability and role separation.
             </li>
+            <li>It is looking more like K3s since the recommended running for AWX involves AWX Operator, and
+                having ran it via Rancher, it looks promising</li>
         </ul>
 
         <h3>Philosophy: One Purpose per Device vs General Purpose</h3>
