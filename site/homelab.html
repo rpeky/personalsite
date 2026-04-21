@@ -222,144 +222,173 @@
             essential routes (e.g., certain devices on some VLANs can access NAS; dev VMs cannot access infrastructure).</li>
     </ul>
 
-    <section />
+<section />
 
-    <section id="remote-access">
-        <h2>Remote Access with WireGuard + AdGuard</h2>
+<section id="remote-access">
+    <h2>Remote Access with WireGuard + AdGuard</h2>
 
-        <p>
-            To access my homelab securely from outside networks, I use <strong>WireGuard</strong> for VPN
-            tunneling and route all DNS traffic through <strong>AdGuard Home</strong>, which uses <strong>Unbound</strong>
-            for encrypted upstream resolution.
-        </p>
+    <p>
+        For remote access, I use a small VPS as a public <strong>
+        WireGuard edge gateway</strong>. This solves a few annoying 
+        residential network problems at once: double NAT, possible CGNAT,
+        and ISP IP rotation. 
+    </p>
 
-        <p>
-            Apart from WireGuard which the router innately supports and acts as the server, AdGuard Home and
-            Unbound (and PiHole which acts as a fallback for AdGuard)
-            are uws independent Docker containers with their own IPs through the <a
-                href="homelab_debian.html">Debian Server</a> on VLAN 10.
-        </p>
+    <p>
+        Instead of exposing the homelab directly 
+        (remember not a reliable IP because of ISP behaviour), 
+        the router maintains an outbound WireGuard connection to the VPS. 
+        Remote peers also terminate on the VPS, and traffic is then 
+        forwarded into the homelab based on the WireGuard interface 
+        design and firewall rules. I split access by interface as well, 
+        so admin and guest peers do not get the same reach into the 
+        internal VLANs.
+    </p>
 
+    <pre>
+        [Remote Peer]
+        ↓ WireGuard 
+        [VPS]
+        ↓ Forwarding Rules to Seperate Tunnel
+        [MikroTik Router]
+        ↓ VLAN Routing + Firewall Policy
+        [Internal VLANs / Services]
+        ↓ Internet Traffic
+        [AdGuard Home (DNS)]
+        ↓
+        [Unbound (DoT upstreams)]
+    </pre>
 
-        <pre>
-            [Client Device]
-            ↓ WireGuard VPN (10.x.x.x)
-            [VPS]
-            ↓ Forward via Seperate Tunnel (iptables rules)
-            [MikroTik Router]
-            ↓ VLAN Routing
-            [AdGuard Home (DNS)]
-            ↓
-            [Unbound (DoT upstreams)]
-        </pre>
+    <p>
+        The intermediary VPS layer helps to solve a couple of problems.
+        One of which is the frequent switching
+        (rotation) of residential IPs by the ISP, solving the issue of 
+        double NAT (I did not want to replace the ISP router with my own 
+        -- My family still uses the regular ISP network), potential CGNAT 
+        issues, and a static IP my domain can point to. It's a cheap 5 
+        dollar/month nanode that purely handels this 
+        network filtering and forwarding job. 
+        The peer list is still quite small and managable, 
+        but I might look at automating it via git changes,
+        though some form of secrets generation and replacement 
+        (maybe hashicorp valut) might be needed.
+    </p>
 
-        WireGuard provides a fast and lightweight tunnel into the <code>10.x.x.0/24</code> subnet
-        (interface <code>wireguard1</code>), routed internally by the RB5009. Each device is manually added via
-        public key in the peerlist on the VPS, and the VPS endpoint is behind a domain I own.
-        </p>
+    <p>
+        The VPS also terminates separate WireGuard interfaces for 
+        different roles. There is an admin interface for full 
+        internal access, a guest interface with restricted VLAN reach,
+        and a backhaul  interface linking the VPS to the homelab router. 
+        From there, traffic is routed and filtered into the internal 
+        network using WireGuard peer design, MikroTik routing, 
+        and firewall rules.
+        No internal VLANs are exposed directly to the public internet.
+    </p>
 
-        <p>
-            The intermediary VPS layer helps to solve a couple of problems. One of which is the frequent switching
-            (rotatioN) of residential IPs by the ISP, solving the issue of double NAT (I did not want to replace
-            the ISP router with my own -- My family still uses the regular ISP network), potential CGNAT issues,
-            and a static IP my domain can point to. It's a cheap 5 dollar/month nanode that purely handels this 
-            network filtering and forwarding job.
-            The peer list is still quite small and managable, but I might look at automating it via git changes,
-            though some form of secrets generation and replacement (maybe hashicorp valut) might be needed.
-        </p>
+    <p>
+        In practice, this means the VPS acts as a public entry point,
+        policy boundary, and transit hop rather than a machine that 
+        actually hosts the services themselves. It is mostly there 
+        to provide a static IP, terminate the tunnels, and forward 
+        permitted traffic onward to the homelab.
+    </p>
 
-        <p>
-            All DNS requests over VPN are handled by AdGuard Home, which blocks ads, trackers, telemetry, and
-            malware.
-            It forwards queries to Unbound, which uses DNS-over-TLS (DoT) to upstream providers.
-            This gives me a secure and ad-free browsing experience, even on public Wi-Fi.
-        </p>
+    <p>
+        All DNS requests over VPN are handled by AdGuard Home, 
+        which tries to block ads, trackers, telemetry, and malware.
+        It forwards queries to Unbound, which uses DNS-over-TLS (DoT) 
+        to upstream providers.
+        This on paper gives me a secure and ad-free browsing experience, 
+        even on public Wi-Fi.
+    </p>
 
-        <p>
-            With this setup, I can access self-hosted services like Proxmox, TrueNAS, Gitea, and Docker UIs from
-            anywhere,
-            without exposing them to the public internet.
-        </p>
+    <p>
+        With this setup, I can access self-hosted services like Proxmox, 
+        TrueNAS, Gitea, and Docker UIs from anywhere,
+        without exposing them to the public internet.
+    </p>
 
-        <p>
-            On my phone, the WireGuard tunnel is permanently active — traffic is always routed through my
-            homelab.
-            On my Windows laptop, I toggle the connection using the WireGuard GUI client.
-            On Linux, I manage it using <code>wg-quick</code> for a minimal CLI-based approach.
-        </p>
-    </section>
+    <p>
+        On my phone, the WireGuard tunnel is permanently active — 
+        traffic is always routed through my homelab.
+        On my Windows laptop, I toggle the connection using the 
+        WireGuard GUI client.
+        On Linux, I manage it using <code>wg-quick</code> 
+        for a minimal CLI-based approach.
+    </p>
+</section>
 
-    <section id="upgrade-roadmap">
-        <h2>Homelab Upgrade Roadmap</h2>
+<section id="upgrade-roadmap">
+    <h2>Homelab Potential Upgrades</h2>
 
-        <p>
-            While the current homelab setup is stable and operational, I have a long-term roadmap focused on
-            scalability,
-            service uptime, physical infrastructure, and secure external access. This roadmap is driven by
-            experimentation, curiosity, and a desire to reduce failure domains while staying in control of every
-            service.
-        </p>
+    <p>
+        While the current homelab setup is stable and operational, I have a long-term roadmap focused on
+        scalability,
+        service uptime, physical infrastructure, and secure external access. This roadmap is driven by
+        experimentation, curiosity, and a desire to reduce failure domains while staying in control of every
+        service.
+    </p>
 
-        <h3>Physical Infrastructure</h3>
-        <ul>
-            <li>Considering a migration from the current 10U MikroTik SR-10U to a 20-40u 1000mm depth rack for improved airflow and cable management. Looking at some 800x1000mm 36u rack to fit forseable hardware needs.</li>
-            <li>Add a <strong>rack-mounted UPS</strong> to prevent data loss and allow for graceful shutdowns
-                across critical services during power outages. Possibly using NUT to control the UPS behaviour</li>
-            <li>Building a central permament 2-4u virtualisation server using either a Rome or Milan chip to take advantage of the enterprise/datacenter hardware decomissioning cycle (hope DDR4 rdimm becomes cheaper in bulk).</li>
-            <li>Additional 1-4u servers based on needs, like NAS expansion, dedicated public facing services server, more proxmox nodes for HA (consensus voting)</li>
-            <li>Standardize rack layout with proper labeling, patch panels, and side/rear cable routing.</li>
-            <li>When the enterprise upgrade/decomission cycle for LTO-8 is due, I plan to add an additional layer of tape archives on top of my NAS, to keep them in a different format and for long term storage.</li>
-        </ul>
+    <h3>Physical Infrastructure</h3>
+    <ul>
+        <li>Considering a migration from the current 10U MikroTik SR-10U to a 20-40u 1000mm depth rack for improved airflow and cable management. Looking at some 800x1000mm 36u rack to fit forseable hardware needs.</li>
+        <li>Add a <strong>rack-mounted UPS</strong> to prevent data loss and allow for graceful shutdowns
+            across critical services during power outages. Possibly using NUT to control the UPS behaviour</li>
+        <li>Building a central permament 2-4u virtualisation server using either a Rome or Milan chip to take advantage of the enterprise/datacenter hardware decomissioning cycle (hope DDR4 rdimm becomes cheaper in bulk).</li>
+        <li>Additional 1-4u servers based on needs, like NAS expansion, dedicated public facing services server, more proxmox nodes for HA (consensus voting)</li>
+        <li>Standardize rack layout with proper labeling, patch panels, and side/rear cable routing.</li>
+        <li>When the enterprise upgrade/decomission cycle for LTO-8 is due, I plan to add an additional layer of tape archives on top of my NAS, to keep them in a different format and for long term storage.</li>
+    </ul>
 
-        <h3>Network Upgrades</h3>
-        <ul>
-            <li>Complete migration to the <strong>MikroTik RB5009UG+S+IN</strong> as the core router with
-                VLAN-aware firewall rules and faster routing capacity.</li>
-            <li>Consider an upgraded Router after the RB5009 like the CCR2004 or entierprise switches</p>
-            <li>Look into replacing the generic 2.5Gbps switch with <strong>MikroTik CRS-series
-                    switches</strong> for better VLAN tagging, consistency, and monitoring.</li>
-            <li>Subscribe to a <strong>10Gbps fiber plan</strong> to fully utilize RB5009’s capabilities and
-                reduce upstream bottlenecks.</li>
-        </ul>
+    <h3>Network Upgrades</h3>
+    <ul>
+        <li>Complete migration to the <strong>MikroTik RB5009UG+S+IN</strong> as the core router with
+            VLAN-aware firewall rules and faster routing capacity.</li>
+        <li>Consider an upgraded Router after the RB5009 like the CCR2004 or entierprise switches</p>
+        <li>Look into replacing the generic 2.5Gbps switch with <strong>MikroTik CRS-series
+                switches</strong> for better VLAN tagging, consistency, and monitoring.</li>
+        <li>Subscribe to a <strong>10Gbps fiber plan</strong> to fully utilize RB5009’s capabilities and
+            reduce upstream bottlenecks.</li>
+    </ul>
 
-        <h3>External Access & Security</h3>
-        <ul>
-            <li>Deploy a <strong>VPS-based reverse proxy</strong> (e.g., Hetzner) to tunnel traffic into the
-                homelab via <strong>WireGuard</strong>.</li>
-            <li>Look into dedicated firewall devices, both enterprise (e.g. Cisco, Fortinet) and open-source
-                (e.g. OPNsense, pfSense) (or even the
-                forbidden virtualised firewall route)</li>
-            <li>Self-host selected services (e.g.Gitea, Jellyfin, dashboards, email) via subdomains routed
-                through the VPS.</li>
-            <li>Ensure all outbound traffic from sensitive services like qBittorrent pass through a <strong>VPN
-                    killswitch</strong> using NordVPN to avoid IP leaks.</li>
-            <li>Begin exploring <strong>Zero Trust architecture</strong> for access control, identity-based
-                access, and device trust posture enforcement.</li>
-            <li>Maybe consider looking into hardware authentication for access control as well</p>
-        </ul>
+    <h3>External Access & Security</h3>
+    <ul>
+        <li>Deploy a <strong>VPS-based reverse proxy</strong> (e.g., Hetzner) to tunnel traffic into the
+            homelab via <strong>WireGuard</strong>.</li>
+        <li>Look into dedicated firewall devices, both enterprise (e.g. Cisco, Fortinet) and open-source
+            (e.g. OPNsense, pfSense) (or even the
+            forbidden virtualised firewall route)</li>
+        <li>Self-host selected services (e.g.Gitea, Jellyfin, dashboards, email) via subdomains routed
+            through the VPS.</li>
+        <li>Ensure all outbound traffic from sensitive services like qBittorrent pass through a <strong>VPN
+                killswitch</strong> using NordVPN to avoid IP leaks.</li>
+        <li>Begin exploring <strong>Zero Trust architecture</strong> for access control, identity-based
+            access, and device trust posture enforcement.</li>
+        <li>Maybe consider looking into hardware authentication for access control as well</p>
+    </ul>
 
-        <h3>Service Architecture</h3>
-        <ul>
-            <li>Increase use of <strong>Proxmox</strong> for service separation via LXC containers and VMs.</li>
-            <li>Move toward either <strong>Docker Swarm</strong> or consider <strong>Kubernetes</strong> (K3s)
-                to maintain consistent uptime, make service recovery easier, and support future scaling.</li>
-            <li>Break out critical services (AdGuard, Unbound, monitoring tools) onto a dedicated
-                <strong>Raspberry Pi 5</strong> for higher availability and role separation.
-            </li>
-            <li>It is looking more like K3s since the recommended running for AWX involves AWX Operator, and
-                having ran it via Rancher, it looks promising</li>
-        </ul>
+    <h3>Service Architecture</h3>
+    <ul>
+        <li>Increase use of <strong>Proxmox</strong> for service separation via LXC containers and VMs.</li>
+        <li>Move toward either <strong>Docker Swarm</strong> or consider <strong>Kubernetes</strong> (K3s)
+            to maintain consistent uptime, make service recovery easier, and support future scaling.</li>
+        <li>Break out critical services (AdGuard, Unbound, monitoring tools) onto a dedicated
+            <strong>Raspberry Pi 5</strong> for higher availability and role separation.
+        </li>
+        <li>It is looking more like K3s since the recommended running for AWX involves AWX Operator, and
+            having ran it via Rancher, it looks promising</li>
+    </ul>
 
-        <h3>Philosophy: One Purpose per Device vs General Purpose</h3>
-        <ul>
-            <li>Borrowing from the UNIX philosophy of "Write programs that do one thing and do it well."</li>
-            <li>Experimenting with a philosophy of <strong>one device per critical role</strong> (DNS, VPN,
-                monitoring) for fault isolation and simplicity.</li>
-            <li>In parallel, maintain <strong>general-purpose nodes</strong> (e.g., Proxmox or Docker hosts) for
-                scalable, fast-to-deploy services.</li>
-            <li>This approach should balance resource efficiency with clean service boundaries.</li>
-        </ul>
-    </section>
+    <h3>Philosophy: One Purpose per Device vs General Purpose</h3>
+    <ul>
+        <li>Borrowing from the UNIX philosophy of "Write programs that do one thing and do it well."</li>
+        <li>Experimenting with a philosophy of <strong>one device per critical role</strong> (DNS, VPN,
+            monitoring) for fault isolation and simplicity.</li>
+        <li>In parallel, maintain <strong>general-purpose nodes</strong> (e.g., Proxmox or Docker hosts) for
+            scalable, fast-to-deploy services.</li>
+        <li>This approach should balance resource efficiency with clean service boundaries.</li>
+    </ul>
+</section>
 
     </main>
 
