@@ -7,13 +7,11 @@
     "content_file": "content/index.html",
     "preload": "",
     "nav": [
-      ["about.html", "About"],
       ["projects.html", "Projects"],
       ["homelab.html", "Homelab"],
       ["contact.html", "Contact"]
     ],
     "footer": [
-      ["about.html", "About"],
       ["projects.html", "Projects"],
       ["homelab.html", "Homelab"],
       ["contact.html", "Contact"]
