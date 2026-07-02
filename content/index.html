@@ -16,44 +16,34 @@
     <h2>Homelab</h2>
     <p>
         I run self-hosted services in my homelab as a long term side project.
-        As much as possible, I tried building it from the ground up — running services I use daily like a
-        git server, jellyfin, automation controllers, internal networks I broke and fixed,
-        and more hardware and time cost than I'd like to admit.
+        At this point it is less of "one old PC running Docker" and more of a small internal infrastructure stack:
+        Proxmox, Terraform, Ansible, internal DNS, reverse proxying, monitoring, media services, GPU passthrough,
+        and enough YAML to make me question my life choices.
     </p>
     <p>
-        It started with building a 'cold' windows configured raid-10 machine, to a
-        FreeNAS/TrueNAS machine using second hand parts, to a dedicated router,
-        and has turned into an ecosystem of different machines and networking gear.
+        The current main compute node is a Supermicro H12SSL-I system with an EPYC 7542, ECC memory, local NVMe,
+        a 10G uplink, IPMI, an RTX 3090 for AI experiments, and a Quadro P2200 dedicated to Jellyfin transcoding.
+        The older Z640 is now more of a proof-of-concept / spare Proxmox box rather than the centre of the lab.
     </p>
     <p>
-        From sourcing parts and building the physical servers, to Docker orchestration to VLANs, 
-        WireGuard tunnels, DNS layering, media and game servers;
-        it’s where I experiment and learn outside of the University.
-        I have on occasion broke my own internet (prep rollbacks and don't prematurely run an untested and non
-        functioning DNS resolver or DNS server or delete them by accident - Its an experience itself to
-        have internet and no access), accidentally wrote over the zfs partition by duplicating over one
-        level too high.
+        The network is split into VLANs for services, VMs, NAS, management, DNS/infra, torrents, and IoT.
+        Core DNS is no longer a random docker container I pray stays alive: I now run separate resolver VMs
+        using AdGuard Home + Unbound, separate BIND9 authoritative DNS VMs for the internal <code>peky</code> zone,
+        and a Caddy reverse proxy VM with an internal CA for HTTPS inside the lab.
     </p>
     <p>
-        It's a sort of playground to learn and run new technologies, as well as my own backyard to
-        consume the fruits of my labour.
+        Most new infrastructure is defined from Terraform and then configured with Ansible.
+        Jenkins, Gitea, a Terraform controller VM, Prometheus/Grafana, and a K3s/Rancher/AWX experiment are all part of
+        the current automation direction. Some parts are working cleanly, some parts are in the "I understand why this broke,
+        but I am still mildly offended" stage.
     </p>
     <p>
-        I am currently in the midst of consolidating my internal services and writing ansible playbooks
-        for migration, fresh spin ups, updates etc. The scale and complexity on the different machines
-        is somewhat managable for now, but I suspect I am close to reaching some cognitive load limit
-        soon. I have some functional knowledge of AWX and Jenkins with internal git integration to
-        help with this problem, so expect some documentation, centralised planning and playbook / script
-        execution and gitops in the works.
+        This is still my playground for learning networking, Linux, service operation, backups, and systems design.
+        It has broken my internet, eaten a ZFS partition once, taught me DNS the hard way, and generally paid back the pain
+        by making abstract infra concepts feel very real.
     </p>
-    <p><a href="homelab.html">Full List of Homelab stuff</a>: A breakdown of my self-hosted infrastructure,
-        hardware specs, and services running across my custom servers and network stack. 
-    </p>
-    <p>
-        Cool read if you have the time (I spent quite some time on the write up), 
-        some of my pain points experienced while building, setting up and running the homelab, 
-        as well as my future plans with it.
-    </p>
+    <p><a href="homelab.html">Full List of Homelab stuff</a>: current architecture, devices, network layout,
+        automation state, and what I still need to clean up.</p>
 </section>
 
 <section id="projects">

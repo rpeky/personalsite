@@ -1,8 +1,14 @@
 <section>
     <h2>Debian Server</h2>
     <p>
-        Runs containerized services using Docker Compose for self-hosted 
-        infrastructure, monitoring, content management, and development.
+        This machine used to be the overloaded Docker Compose heart of the homelab.
+        It ran media services, Gitea, DNS experiments, monitoring experiments, and basically anything I wanted to try
+        before the lab had a real VM/provisioning workflow.
+    </p>
+    <p>
+        It is currently being demoted from "main services box" into a lighter secondary role. The EPYC Proxmox node now
+        carries most of the serious VM-based infrastructure, while this Debian server is still useful for simpler Docker
+        services, staging, backup/failover ideas, and anything I want to keep away from the main VM host.
     </p>
     
     <p>

@@ -264,6 +264,25 @@
     ]
   },
 
+  "homelab_epyc7542.html": {
+    "title": "EPYC 7542 Proxmox Node — Ryan Pek",
+    "description": "Current main EPYC 7542 Proxmox node in Ryan Pek homelab",
+    "header_title": "Personal Homelab",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/homelab_epyc7542.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["homelab.html", "Homelab"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
   "projects.html": {
     "title": "Projects — Ryan Pek",
     "description": "Projects homepage - Ryan Pek",
@@ -420,6 +439,44 @@
     "header_title": "Projects",
     "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_minichord.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "projects_homelab_infra.html": {
+    "title": "Homelab Infrastructure Automation — Ryan Pek",
+    "description": "Terraform and Ansible automation for Ryan Pek homelab",
+    "header_title": "Projects",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/projects_homelab_infra.html",
+    "preload": "",
+    "nav": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ],
+    "footer": [
+      ["index.html", "Home"],
+      ["projects.html", "Projects"],
+      ["contact.html", "Contact"]
+    ]
+  },
+
+  "projects_corestack_tetrish.html": {
+    "title": "Corestack / Distributed Tetrish — Ryan Pek",
+    "description": "Distributed systems project notes for Corestack and Tetrish",
+    "header_title": "Projects",
+    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "content_file": "content/projects_corestack_tetrish.html",
     "preload": "",
     "nav": [
       ["index.html", "Home"],

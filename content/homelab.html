@@ -1,25 +1,35 @@
 <section id="overview">
     <h2>Overview</h2>
-    <p>This is my personal homelab — a self-hosted ecosystem of servers and services for development, media, and
-        experimentation.</p>
-    <p>Blindly charging into 802.1q (VLANs) was a uniquely painful yet meaningful experience.</p>
-    <p>May or may not have accidentally nuked the router, zfs pools, DNS, DNS resolution and docker containers
-        at one point or another. Sometimes all of them at the same time.</p>
-    <p>Also between mismatched memory sticks and NVIDIA cards, I would debug the NVIDIA cards for future
-        problems first. 18 cycles of memory training made little sense, but what was less intuitive to me was
-        disabling CSM (compatability support module) to get a P2200 card to work with the B450M board the Debian
-        server was on.</p>
-    <p>To be honest, the homelab has been my way of diving headfirst into learning real-world networking and
-        systems architecture outside of formal education, applying and testing concepts I come across.</p>
-    <p>Currently I am exploring using ansible and terraform to define the states of my lab environment, as well
-        as looking into Jenkins/AWX to run and apply the configurations once pushed to my internal Gitea.
+    <p>
+        This is my personal homelab — a self-hosted ecosystem of servers and services for development,
+        media, automation, storage, monitoring, and breaking things in a controlled environment.
+        Controlled is doing a lot of work in that sentence.
     </p>
-    <p><a href="homelab_old.html">Legacy homelab state</a>
+    <p>
+        The lab has moved from the earlier "Docker box + NAS + router" phase into something closer to a small
+        infrastructure environment. The current centre of gravity is a Supermicro EPYC Proxmox node, with Terraform
+        creating VMs, Ansible configuring them, Gitea/Jenkins starting to act as the control path, and a proper split
+        between DNS resolvers, authoritative DNS, reverse proxying, media, AI, and monitoring.
+    </p>
+    <p>
+        Blindly charging into 802.1Q VLANs was a uniquely painful yet meaningful experience.
+        I have nuked router rules, DNS, DNS resolution, Docker containers, Proxmox state, and at least one ZFS path
+        by being one directory too confident. This is also why the current direction is more declarative: configs in git,
+        playbooks that can be re-run, and fewer "I swear I changed this manually somewhere"/"I forgor" moments.
+    </p>
+    <p>
+        Current state as of July 2026: the lab is mostly operational, but still actively being refactored.
+        Core services are split into VMs, media is being moved off the old Debian Docker host, Jellyfin has a dedicated
+        GPU path, Ollama/Open WebUI have the RTX 3090 path, DNS has primary/secondary style separation, and the internal
+        wiki is slowly becoming the map I wish I had before I built the thing.
+    </p>
+    <p><a href="homelab_old.html">Legacy homelab state</a> is still around as a snapshot of the older write-up.</p>
 </section>
 
 <section id="devices">
     <h2>Devices</h2>
     <ul>
+        <li><a href="homelab_epyc7542.html">7542 Rome Server</a></li>
         <li><a href="homelab_truenas.html">TrueNAS Server</a></li>
         <li><a href="homelab_debian.html">Debian Server</a></li>
         <li><a href="homelab_cold.html">Cold Backup Server</a></li>
@@ -32,6 +42,7 @@
         <img src="assets/images/homelab.webp" alt="Surprise surprise! Its just a bunch of PCs all along">
         <figcaption>Surprise surprise! Its just a bunch of PCs all along</figcaption>
     </figure>
+
 </section>
 
 <section id="network-architecture">
@@ -198,6 +209,82 @@
 
 <section />
 
+<section id="current-architecture">
+    <h2>Current Architecture</h2>
+
+    <figure>
+        <img src="assets/images/rackfront.webp"
+             alt="Front view of my homelab rack with servers, UPS, networking gear, and cabling"
+             loading="lazy">
+        <figcaption>
+            Now in 36u rack form.
+        </figcaption>
+    </figure>
+
+    <p>
+        The homelab is split into a few rough layers. The physical layer is the rack, router, switch, NAS,
+        Proxmox nodes, Raspberry Pis, and UPS/power work. The platform layer is Proxmox, TrueNAS, VLANs,
+        WireGuard, DNS, and internal TLS. The services layer is where the fun and pain live: Gitea, Jenkins,
+        Caddy, Jellyfin, Shoko, monitoring, Ollama, Open WebUI, K3s experiments, and everything else I decide
+        to deploy because it looked useful at 2am.
+
+        Also AI is a keyword that keeps popping up, here is some infra allocated to tick the AI box.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Layer</th>
+                <th>Current state</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Compute</td>
+                <td>EPYC 7542 Proxmox node is the main host</td>
+                <td>Most new VMs live here; Z640 is now secondary / POC.</td>
+            </tr>
+            <tr>
+                <td>Storage</td>
+                <td>TrueNAS handles bulk ZFS storage</td>
+                <td>NFS for services and Proxmox, SMB for family/internal access.</td>
+            </tr>
+            <tr>
+                <td>Networking</td>
+                <td>MikroTik RB5009 + CRS310</td>
+                <td>Router-on-a-stick style VLAN routing, 10G trunk, default drop between VLANs.</td>
+            </tr>
+            <tr>
+                <td>DNS</td>
+                <td>AdGuard + Unbound resolvers, BIND9 authoritative VMs</td>
+                <td>Internal <code>peky</code> zone, local PTR handling, DNSSEC validation upstream.</td>
+            </tr>
+            <tr>
+                <td>Reverse proxy / TLS</td>
+                <td>Caddy VM with internal CA</td>
+                <td>Internal HTTPS for services; browser trust still needs manual CA import on some machines.</td>
+            </tr>
+            <tr>
+                <td>Automation</td>
+                <td>Terraform + Ansible, Jenkins/Gitea in progress</td>
+                <td>Trying to make rebuilds boring instead of heroic.</td>
+            </tr>
+            <tr>
+                <td>Media</td>
+                <td>Jellyfin/Shoko/Komga stack moving into dedicated VMs</td>
+                <td>Quadro P2200 is for Jellyfin transcoding.</td>
+            </tr>
+            <tr>
+                <td>AI</td>
+                <td>Ollama + Open WebUI on VM path</td>
+                <td>RTX 3090 is for local LLM / GPU experiments.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
 <section id="remote-access">
     <h2>Remote Access with WireGuard + AdGuard</h2>
 
@@ -290,6 +377,37 @@
         On Linux, I manage it using <code>wg-quick</code> 
         for a minimal CLI-based approach.
     </p>
+</section>
+
+<section id="automation-state">
+    <h2>Automation State</h2>
+    <p>
+        The current automation direction is to make the lab reproducible enough that rebuilding a VM or service is not
+        a dramatic event. Terraform defines the Proxmox VM shape, cloud-init seeds the base config, Ansible applies the
+        service configuration, and Jenkins/Gitea are being wired up so changes can eventually flow from git into the lab
+        with less manual clicking.
+    </p>
+    <ul>
+        <li><strong>Terraform</strong>: VM definitions, VLAN placement, cloud-init, storage, sizing, and Proxmox provider work.</li>
+        <li><strong>Ansible</strong>: bootstrap, packages, users, SSH, chrony, Caddy, DNS, Gitea, Jenkins, monitoring, K3s, and media roles.</li>
+        <li><strong>Jenkins</strong>: intended CI runner for linting, validating, and eventually running controlled plans/playbooks.</li>
+        <li><strong>Gitea</strong>: internal git mirror / source of truth for lab repos.</li>
+        <li><strong>SOPS</strong>: secrets handling, I also want to figure out how Hashi vault works.</li>
+    </ul>
+    <p>
+        This is nowhere close to an enterprise levle automation. It is done enough to be useful, broken enough to teach me things,
+        and structured enough that I can keep improving it without starting from scratch each time.
+    </p>
+
+    <figure>
+        <img src="assets/images/rackback.webp"
+             alt="Back view of my homelab rack showing networking, cabling, servers, and power"
+             loading="lazy">
+        <figcaption>
+            Back side of the rack, cable management still pretty cursed.
+        </figcaption>
+    </figure>
+
 </section>
 
 <section id="upgrade-roadmap">

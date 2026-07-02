@@ -1,0 +1,79 @@
+<section id="overview">
+    <h2>EPYC 7542 Proxmox Node</h2>
+    <p>
+        This is the current main compute node of my homelab. It replaced the HP Z640 as the serious Proxmox box,
+        mostly because I wanted more PCIe lanes, more memory headroom, IPMI, more local NVMe, and enough GPU space
+        to separate media transcoding from AI experiments.
+    </p>
+    <p>
+        The short version: Supermicro H12SSL-I, AMD EPYC 7542, ECC LRDIMM, Proxmox, 10G networking, RTX 3090,
+        Quadro P2200, and a bunch of dead RDIMMs.
+    </p>
+</section>
+
+<section id="hardware">
+    <h2>Hardware</h2>
+    <ul>
+        <li><strong>Motherboard:</strong> Supermicro H12SSL-I</li>
+        <li><strong>CPU:</strong> AMD EPYC 7542</li>
+        <li><strong>Cooler:</strong> Noctua NH-U14S TR4-SP3</li>
+        <li><strong>RAM:</strong> 3*64GB DDR4 LRDIMM sticks, currently running the stable set while I sort out the full channel population</li>
+        <li><strong>Case:</strong> SilverStone RM51 5U rackmount chassis</li>
+        <li><strong>PSU:</strong> Corsair RM1000x</li>
+        <li><strong>Networking:</strong> onboard 1G + IPMI + 10G SFP+ uplink to the CRS310</li>
+        <li><strong>GPU:</strong> RTX 3090 24GB for local LLM / AI experiments</li>
+        <li><strong>GPU:</strong> Quadro P2200 for Jellyfin transcoding</li>
+        <li><strong>Storage:</strong> 990 Evo Plus boot drive, ASUS Hyper M.2 card with 2x Samsung 990 PRO / 2x 990 EVO Plus SSDs</li>
+    </ul>
+</section>
+
+<section id="role">
+    <h2>Role in the Lab</h2>
+    <p>
+        This machine is meant to be the main VM and GPU host. The old Debian server used to carry too many services in
+        one Docker Compose file, which worked until the service list became too long and every change felt like defusing
+        a bomb. The EPYC node lets me split services into clearer VMs, assign VLANs properly, and pass through GPUs to
+        the workloads that actually need them.
+    </p>
+    <ul>
+        <li><strong>Infrastructure VMs:</strong> DNS, Caddy, Gitea, Jenkins, Terraform controller, monitoring.</li>
+        <li><strong>Media VMs:</strong> Jellyfin, Shoko, Komga, and related services.</li>
+        <li><strong>AI VMs:</strong> Ollama and Open WebUI, with the RTX 3090 reserved for local model experiments.</li>
+        <li><strong>Kubernetes lab:</strong> K3s control/worker nodes for Rancher, AWX, and cluster experiments.</li>
+        <li><strong>Sandbox VMs:</strong> disposable systems for testing before touching the actual network.</li>
+    </ul>
+</section>
+
+<section id="proxmox">
+    <h2>Proxmox Layout</h2>
+    <p>
+        Proxmox is the base hypervisor. The current VM flow is to use a Debian cloud-init template with
+        <code>qemu-guest-agent</code>, then let Terraform clone and size VMs, and let Ansible take over the actual
+        configuration. This took a while to make sane because guest-agent state, cloud-init timing, and Proxmox clone
+        behaviour all have opinions.
+    </p>
+    <p>
+        Networking is done through a VLAN-aware bridge connected to the 10G path. VMs get placed into the relevant VLAN
+        instead of everything living in one flat network like an accidental LAN party.
+    </p>
+</section>
+
+<section id="gpu">
+    <h2>GPU Split</h2>
+    <p>
+        The RTX 3090 is better spent on local LLM experiments,
+        Open WebUI/Ollama, and anything that needs 24GB of VRAM. The P2200 is a better fit for Jellyfin transcoding,
+        because media serving should not have to fight an LLM for GPU time just because I asked a model to explain Raft
+        while someone is watching anime.
+    </p>
+</section>
+
+<section id="status">
+    <h2>Status</h2>
+    <ul>
+        <li><strong>Working:</strong> Proxmox install, IPMI access, VM templates, Terraform-driven VM creation, 10G uplink.</li>
+        <li><strong>Working:</strong> Core infra VMs and media/AI VM migration path.</li>
+        <li><strong>In progress:</strong> final RAM population, GPU passthrough polish, monitoring, and documentation.</li>
+        <li><strong>Lesson learned:</strong> memory errors on a server board suck. Test sticks properly.</li>
+    </ul>
+</section>

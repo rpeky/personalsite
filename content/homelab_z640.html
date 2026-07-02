@@ -1,8 +1,14 @@
 <section>
-    <h2>HP Z640 Workstation/Server</h2>
-    <p>Current proof of concept for my homelab, running proxmox as a hypervisor to run vms that make the core of my network, automation and services</p>
-    <p>Uses a mix of zfs stripped mirroring of the NVME drives on a x4 biurcation card in the machine, regular 2.5"" SSDs, and NAS storage</p>
-    <p><strong>Work in Progress Page</strong><p>
+    <h2>HP Z640 Workstation / Old Proxmox Node</h2>
+    <p>
+        This was the first serious Proxmox proof-of-concept machine for the homelab.
+        It proved that the Terraform + Ansible + VM-per-service direction was worth doing before I committed to the EPYC build.
+    </p>
+    <p>
+        It is no longer the main compute node. The EPYC 7542 server has taken over the heavy VM, GPU, and service hosting role.
+        The Z640 is now better thought of as a spare/secondary virtualization box, a testing machine, or a place to try migrations
+        before I do something dumb to the main node.
+    </p>
 </section>
 
 <h2>Hardware</h2>
