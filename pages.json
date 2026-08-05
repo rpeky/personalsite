@@ -3,7 +3,7 @@
     "title": "Ryan Pek - Portfolio & CV & Personal Site",
     "description": "Homepage and portfolio site of Ryan Pek",
     "header_title": "Welcome",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/index.html",
     "preload": "",
     "nav": [
@@ -22,7 +22,7 @@
     "title": "About — Ryan Pek",
     "description": "More About Ryan Pek",
     "header_title": "More About Me",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/about.html",
     "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/me.webp\" type=\"image/webp\">",
     "nav": [
@@ -54,7 +54,7 @@
     "title": "Ryan Pek - Development Environment",
     "description": "Ryan Pek's Development Environment, PC, Laptop, Server specifications",
     "header_title": "Development Environment",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/setup.html",
     "preload": "",
     "nav": [
@@ -71,7 +71,7 @@
     "title": "Site Design — Ryan Pek",
     "description": "Why this site is built simply and by hand",
     "header_title": "Site Design",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/sitedesign.html",
     "preload": "",
     "nav": [
@@ -88,7 +88,7 @@
     "title": "Book Recommendations — Ryan Pek",
     "description": "Just a running list of books I like or found helpful",
     "header_title": "Book list",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/bookrecommendations.html",
     "preload": "",
     "nav": [
@@ -105,7 +105,7 @@
     "title": "Homelab - Ryan Pek",
     "description": "Homelab homepage",
     "header_title": "Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab.html",
     "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/homelab.webp\" type=\"image/webp\">",
     "nav": [
@@ -130,7 +130,7 @@
     "title": "Legacy Homelab — Ryan Pek",
     "description": "Older homelab write-up and architecture state",
     "header_title": "Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_old.html",
     "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/homelab.webp\" type=\"image/webp\">",
     "nav": [
@@ -155,7 +155,7 @@
     "title": "Homelab Router - Mikrotik",
     "description": "Router Hardware - Homelab router",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_router.html",
     "preload": "",
     "nav": [
@@ -174,7 +174,7 @@
     "title": "Homelab Switch",
     "description": "Homelab hardware - switch",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_switch.html",
     "preload": "",
     "nav": [
@@ -193,7 +193,7 @@
     "title": "TrueNAS Server — Ryan Pek",
     "description": "TrueNAS Server - Ryan Pek Homelab",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_truenas.html",
     "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/truenasv4.webp\" type=\"image/webp\">",
     "nav": [
@@ -212,7 +212,7 @@
     "title": "Debian Server — Ryan Pek",
     "description": "Debian Server - Homelab main services server",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_debian.html",
     "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/debianserver.webp\" type=\"image/webp\">",
     "nav": [
@@ -231,7 +231,7 @@
     "title": "Cold Backup Server — Ryan Pek",
     "description": "Cold Backup Server - Ryan Pek Homelab",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_cold.html",
     "preload": "<link rel=\"preload\" as=\"image\" href=\"assets/images/coldstorage.webp\" type=\"image/webp\">",
     "nav": [
@@ -250,7 +250,7 @@
     "title": "POC Homelab Server— Ryan Pek",
     "description": "Z640 Workstation - Ryan Pek Homelab",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_z640.html",
     "nav": [
       ["index.html", "Home"],
@@ -268,7 +268,7 @@
     "title": "EPYC 7542 Proxmox Node — Ryan Pek",
     "description": "Current main EPYC 7542 Proxmox node in Ryan Pek homelab",
     "header_title": "Personal Homelab",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/homelab_epyc7542.html",
     "preload": "",
     "nav": [
@@ -287,7 +287,7 @@
     "title": "Projects — Ryan Pek",
     "description": "Projects homepage - Ryan Pek",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects.html",
     "preload": "",
     "nav": [
@@ -304,7 +304,7 @@
     "title": "Singapore Bus Route Project - Ryan Pek",
     "description": "Singapore Bus Route Project by Ryan Pek",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_bus_route_project.html",
     "preload": "",
     "nav": [
@@ -323,7 +323,7 @@
     "title": "C JSON Parser Project - Ryan Pek",
     "description": "C JSON Parser Project by Ryan Pek",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_cjsonparser_project.html",
     "preload": "",
     "nav": [
@@ -342,7 +342,7 @@
     "title": "Custom C Shell – Ryan Pek",
     "description": "Custom C Shell by Ryan Pek",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_cshell_project.html",
     "preload": "",
     "nav": [
@@ -361,7 +361,7 @@
     "title": "SUTD Pathfinding Project - Ryan Pek",
     "description": "Pathfinding Project by Ryan Pek",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_pathfinding_project.html",
     "preload": "",
     "nav": [
@@ -380,7 +380,7 @@
     "title": "SUTD 50.005 – Secure File Transfer in C (No Libs) — Ryan Pek",
     "description": "From-scratch cryptographic file transfer in C",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_secure_file_transfer_rewrite_c_project.html",
     "preload": "",
     "nav": [
@@ -399,7 +399,7 @@
     "title": "Modular Travel Planner Backend 'Wandr' – Ryan Pek",
     "description": "Modular Travel Planner Backend for Wandr",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_wandr_javaspring_project.html",
     "preload": "",
     "nav": [
@@ -418,7 +418,7 @@
     "title": "Miniraft",
     "description": "Mini Raft implementation in Golang, sections 5.1-5.3 in the Raft paper",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_miniraft.html",
     "preload": "",
     "nav": [
@@ -437,7 +437,7 @@
     "title": "Minichord",
     "description": "Mini Chord implementation",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_minichord.html",
     "preload": "",
     "nav": [
@@ -456,7 +456,7 @@
     "title": "Homelab Infrastructure Automation — Ryan Pek",
     "description": "Terraform and Ansible automation for Ryan Pek homelab",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_homelab_infra.html",
     "preload": "",
     "nav": [
@@ -475,7 +475,7 @@
     "title": "Corestack / Distributed Tetrish — Ryan Pek",
     "description": "Distributed systems project notes for Corestack and Tetrish",
     "header_title": "Projects",
-    "header_subtitle": "Ryan Pek (b. 2001) | 3rd Year Undergraduate SUTD | Canned food enjoyer",
+    "header_subtitle": "Ryan Pek (b. 2001) | Final Year Undergraduate SUTD | Canned food enjoyer",
     "content_file": "content/projects_corestack_tetrish.html",
     "preload": "",
     "nav": [
