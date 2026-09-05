@@ -3,12 +3,17 @@
     <p>
         This machine used to be the overloaded Docker Compose heart of the homelab.
         It ran media services, Gitea, DNS experiments, monitoring experiments, and basically anything I wanted to try
-        before the lab had a real VM/provisioning workflow.
+        before the lab had a real VM/provisioning workflow. I have since migrated from its current form
+        to a 2u rack mount case, pending the image update when I have time to upload an image from my phone
+        to the repo and format it.
     </p>
+
     <p>
-        It is currently being demoted from "main services box" into a lighter secondary role. The EPYC Proxmox node now
-        carries most of the serious VM-based infrastructure, while this Debian server is still useful for simpler Docker
-        services, staging, backup/failover ideas, and anything I want to keep away from the main VM host.
+        Currently, this server acts as a standalone management server, running minio for local s3 to contain
+        my terraform states, as well as acting as a jenkins agent for my jenkins server. The jenkins server
+        points at this server to checkout my internal terraform and ansible repos for chechking, and this 
+        server has the ability to run my terraform apply for me on push to free my one laptop from owning
+        all the states. At least it's not idiling and servers an independent role from the proxmox server.
     </p>
     
     <p>
@@ -70,7 +75,7 @@
         <li>CPU: AMD Ryzen 5 5600G</li>
         <li>RAM: 64 GB DDR4</li>
         <li>Storage: 256 GB SSD</li>
-        <li>Storage: 4x 4 TB SSD</li>
+        <li>Storage: 4x 4 TB HDD</li>
     </ul>
 
     <h2>Active Docker Services</h2>
