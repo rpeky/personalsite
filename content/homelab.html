@@ -206,7 +206,6 @@
         <li><strong>Firewall rules</strong> on the MikroTik to restrict access between VLANs, allowing only
             essential routes (e.g., certain devices on some VLANs can access NAS; dev VMs cannot access infrastructure).</li>
     </ul>
-
 <section />
 
 <section id="current-architecture">
@@ -480,4 +479,41 @@
             scalable, fast-to-deploy services.</li>
         <li>This approach should balance resource efficiency with clean service boundaries.</li>
     </ul>
+</section>
+
+<section id="Lessons Learnt">
+    <h2>Lessons Learnt</h2>
+
+    <p>
+        Just a small section of some of the problems i encountered cause of skill issue, 
+        and how they were patched.
+    </p>
+
+    <h3>Duplicate VLAN gateway</h3>
+    <p>
+        I was experiencing intermittent SSH drops, internal DNS resolution failures, and 
+        general conenctivity issues like Jellyfin / Proxmox webui having random connection drops.
+        After a whole year of debugging, I found out (at least when I patched this the performance 
+        improved) that the cause was a network configuration I made when I was configuring the 
+        CRS310 (the switch) early on and assigned each VLAn the same x.x.x.1 gateway address for
+        all my VLANs on the switch.
+    </p>
+
+    <p>
+        This resulted in two different MAC addresses (the router and the switch) claiming the 
+        same gateway IP. Depending on which MAC is recorded in the host device's ARP cache, 
+        the traffic has a different destination and the wrong device. This is likely the root
+        problem on why there was random drops but technically functional connections.
+    </p>
+
+    <p>
+        I fixed this by making the RB5009 the only L3 router (since the CRS310 can behave as one), 
+        and gateway for all my VLANs, while the CRS310 maintains as a L2 switch with one management IP. 
+        The switch still has to know that the VLANs exist and are carried in the tagged trunk ports,
+        although it does not need an IP for every VLAn to do so (the knowledge gap is this). My original
+        mistake was configuring the VLANs on the switch the same way I configured them on the router
+        (literal skill issue), this unintentionally made the switch behave as a L3 device instead of 
+        simply switching and forwarding VLAN traffic.
+    </p>
+
 </section>
