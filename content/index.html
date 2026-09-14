@@ -52,7 +52,8 @@
         Most new infrastructure is defined from Terraform and then configured with Ansible.
         Jenkins, Gitea, a Terraform controller VM, Prometheus/Grafana, and a K3s/Rancher/AWX experiment are all part of
         the current automation direction. Some parts are working cleanly, some parts are in the "I understand why this broke,
-        but I am still mildly offended" stage.
+        but I am still mildly offended" stage. Thanks to Grafana and UptimeKuma, I can watch stuff break in real time,
+        or everyting break when even those don't work. (lol)
     </p>
     <p>
         This is still my playground for learning networking, Linux, service operation, backups, and systems design.
@@ -74,13 +75,8 @@
             take advantage of gothreads for data collection, as well as writing documentation and short reports.
         </li>
         <li>
-            <a href="homelab_z640.html">Homelab infrastructure automation</a>: Sandbox/POC machine for homelab automation before
-            I get more permanent rack mounted solution. The services and state of my homelab is starting to get too hard to manage,
-            with some stopgap procedures I ran fogotten cause of time, and the maintainence / upgrades taking longer to do.
-            I have started trying some automation via ansible and git to help with migration and maintainence issues.
-            Currently most of my services run off single ansible playbooks,
-            and my self-hosted services are being ran on this hardware. In the middle of planning to refactor to more standard 
-            best-practice ish formatting, and to migrate once hardware prices go down again.
+            <a href="projects_homelab_infra.html">Homelab Infrastructure Automation</a>:
+            This webpage, and the server running it, itself.
         </li>
     </ul>
 </section>

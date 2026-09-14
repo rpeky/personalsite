@@ -7,18 +7,22 @@
     </p>
     <p>
         The current stack uses Terraform for Proxmox VM creation and Ansible for OS/service configuration. On top of
-        that, I am wiring Jenkins, Gitea, SOPS, internal DNS, Caddy, and monitoring into a workflow that can eventually
-        act like a small internal platform.
+        that, I have wired up Jenkins, Gitea, SOPS, internal DNS, Caddy, and monitoring to make serving services
+        more automated and state based. (A pretty good way of keeping track of stuff, and minimal effort needed to
+        make changes if I do it right)
     </p>
 </section>
 
 <section id="scope">
     <h2>Scope</h2>
     <ul>
-        <li><strong>Terraform:</strong> Proxmox VM definitions, clone/template flow, VLAN assignment, CPU/RAM/disk sizing, cloud-init.</li>
-        <li><strong>Ansible:</strong> bootstrap, users, SSH, packages, chrony, Caddy, BIND9, AdGuard/Unbound, Gitea, Jenkins, monitoring, K3s, and media roles.</li>
+        <li><strong>Terraform:</strong> Proxmox VM definitions, clone/template flow, VLAN assignment, CPU/RAM/disk sizing,
+            cloud-init.</li>
+        <li><strong>Ansible:</strong> bootstrap, users, SSH, packages, chrony, Caddy, BIND9, AdGuard/Unbound, Gitea, Jenkins,
+            monitoring, K3s, and media roles.</li>
         <li><strong>Secrets:</strong> SOPS for encrypted environment/secrets handling.</li>
-        <li><strong>CI/CD:</strong> Jenkins controller + agent path for linting, validation, Terraform plan/apply, and playbook execution.</li>
+        <li><strong>CI/CD:</strong> Jenkins controller + agent path for linting, validation, Terraform plan/apply, and playbook/script
+            execution.</li>
         <li><strong>Source of truth:</strong> Gitea as the internal git home/mirror for homelab repos.</li>
     </ul>
 </section>
@@ -45,7 +49,7 @@
     <p>
         This project is basically where my interests in Linux, networking, DevOps, SRE, and systems administration meet.
         It turns abstract ideas like idempotence, failure domains, DNS dependency chains, access control, and "source of truth"
-        into things that can actually break my evening. That makes the learning stick.
+        into things that can actually break my evening. (Big word farming)
     </p>
 </section>
 
@@ -53,9 +57,7 @@
     <h2>Lessons Learned So Far</h2>
     <ul>
         <li>DNS should be boring, redundant, and documented. Mine was not always all three.</li>
-        <li>Guest agents matter when automation waits for VM state.</li>
         <li>One big Docker Compose file is fun until the service count crosses the cognitive load limit.</li>
         <li>Internal CAs are nice, but every client still needs to trust them eventually.</li>
-        <li>Kubernetes is powerful, but it is also very good at making a small problem look distributed.</li>
     </ul>
 </section>

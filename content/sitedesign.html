@@ -6,13 +6,14 @@
         start small and from scratch, don’t hide complexity behind tooling, and make sure it works offline.
     </p>
     <p>
-        If something loads slowly, that’s probably on me.
+        If something loads slowly, that’s probably on me. Though the site itself is static and overall a 
+        pretty small payload for the browser.
     </p>
     <p>
         This site is currently self hosted from my homelab. There is a VPS acting as a proxy for my homelab
         to anchor to, and behind the VPS is my exposed VLAN70 network. This site is served by nginx, and
-        I hace another vm running Caddy renew the certiicates as well as reverse proxy this site and future
-        sites I plan to host.
+        I have caddy running in this VLAN for the reverse proxy as well as to renew the certificate for this 
+        site and future sites I plan to host for public viewing.
     </p>
     <p>
         There is just something nice about having just having a website that 
@@ -20,55 +21,34 @@
     </p>
     <p>
         If we look at Stroustrup’s or the McMaster-Carr website, they just 
-        have everything accesisble at a glance.
-        Both sites look information dense but because there are so little elements 
+        have everything accesisble at a glance. 
+        Fabrice Bellard's site is even easier to navigate.
+        These sites look information dense but because there are so little elements 
         or moving parts in the page, it is actually pretty easy to understand
-        what is going on at a glance.
+        what is going on at a glance. 
+    </p>
+    <p>
+        Truly simple is the best.
     </p>
 </section>
 
-<section id="vim-setup">
-    <h2>Editing This Site with Vim</h2>
-
+<section>
+    <h3>Workflow I guess</h3>
     <p>
-        All the HTML and CSS for this site is written by hand using Vim with a minimal setup — no frameworks,
-        no IDE bloat, just raw files, a questionable (because I have no clue how python implements it)
-        python abstracted setup of a http server and keystrokes. Below is my vimrc at the time of writing this site:
+        I write everything manually in this site using vim/nvim, then build it locally
+        to test before pushing it to my local gitea instance for my internal repos.
     </p>
-
-    <pre><code>
-    execute pathogen#infect()
-    autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
-    syntax on
-    filetype plugin indent on
-    set autoindent
-
-    set smartindent
-    set smarttab
-    set tabstop=4
-    set shiftwidth=4
-    set expandtab
-    let g:html_indent_script1 = 1
-    let g:html_indent_style1 = 1
-    let g:html_indent_tag1 = 1
-
-    set number
-    set relativenumber
-    colorscheme slate
-    </code></pre>
-
     <p>
-        Quick and dirty script I wrote to view the changes and run on a tmux pane,
-        then switch to and ctrl-z the editing pane to modify the site on fullscreen:
+        My Jenkins server detects the push, making my admin config node (thats a Jenkins 
+        worker) do some pulling and building, creating a tarball of this build for rollback,
+        then using rsync to make the changes. (since rsync only pushes new files and 
+        removes outdated files)
     </p>
-    <pre><code>
-    #!/bin/bash
-    python3 -m http.server 8000
-    </code></pre>
-
     <p>
-        I write everything manually, treating HTML and CSS like LaTeX — structured, minimal, and readable.
-        No build step, no minifiers, just <code>:w</code> and loads of <code>:vsp</code> to view other pages in split.
+        Then poof, this site is updated. unlike my terraform pipeline, this one dosen't
+        need approval since it won't instantly break everyting.
     </p>
+    <p>
+        Other than that, this vm is managed by my terraform repo, the vm configured to reach this
+        state by ansible. That's about it. Pretty cool I guess when I first got this working.
 </section>
